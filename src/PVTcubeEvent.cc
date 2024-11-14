@@ -28,9 +28,9 @@ void PVTcubeEventAction::EndOfEventAction(const G4Event* anEvent)
 {
 	// Initialize analysis manager and fill N tuple with energy depositions
 	G4AnalysisManager *Aman = G4AnalysisManager::Instance();
-	// Fill NuLat scoring N-tuple
+	// Fill scoring N-tuple
 	Aman->FillNtupleIColumn(2, 0, fEvent);
-	// finish NuLat Scoring
+	// finish Scoring
 	Aman->AddNtupleRow(2);
-	// TODO: ...
+	// TODO: add energy scoring
 }

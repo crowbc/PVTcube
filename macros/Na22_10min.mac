@@ -1,6 +1,7 @@
 # Macro file for the initialization phase of PVTcube
 #
 /run/initialize
+#/run/numberOfThreads 8
 #
 # Specify particle source (Na-22 nucleus, with 0 charge, 0 excitation energy)
 /gps/particle ion

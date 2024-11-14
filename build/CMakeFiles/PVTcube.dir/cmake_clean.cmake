@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PVTcube.dir/src/PVTcubeEvent.cc.o.d"
   "CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.o"
   "CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.o.d"
+  "CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o"
+  "CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o.d"
   "CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o"
   "CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o.d"
   "CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o"

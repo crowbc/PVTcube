@@ -125,6 +125,11 @@ void PVTcubeDetectorConstruction::DefineMaterials()
 	concrete = nist->FindOrBuildMaterial("G4_CONCRETE");
 	stainless = nist->FindOrBuildMaterial("G4_STAINLESS-STEEL");
 	lead = nist->FindOrBuildMaterial("G4_Pb");
+	mumetal = new G4Material("mumetal", rho_mumetal, 4);
+	mumetal->AddElement(Ni, 0.80);
+	mumetal->AddElement(Fe, 0.15);
+	mumetal->AddElement(Cu, 0.04);
+	mumetal->AddElement(Mo, 0.01);
 	borosilicateGlass = new G4Material("borosilicateGlass", rho_BorosilicateGlass, 2);
 	borosilicateGlass->AddElement(Si, 1);
 	borosilicateGlass->AddElement(O, 2);
@@ -374,6 +379,15 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	attr = new G4VisAttributes(false);
 	// Variables for setting positions
 	G4double xPos = 0., yPos = 0., zPos = 0.;
+	// Declare rotation angle
+	G4double phi = 90*deg;
+	// Declare vectors to construct rotation matrices
+	G4ThreeVector u = G4ThreeVector(0, 0, 1);
+	G4ThreeVector v = G4ThreeVector(-std::sin(phi), std::cos(phi), 0);
+	G4ThreeVector w = G4ThreeVector(std::cos(phi), std::sin(phi), 0);
+	// Declare rotation matrices to use for source, LG and PMT, including shield wall
+	G4RotationMatrix *xRot = new G4RotationMatrix(u, v, w);
+	G4RotationMatrix *yRot = new G4RotationMatrix(v, u, w);
 	// World volume
 	solidWorld = new G4Box("solidWorld", xWorld, yWorld, zWorld);
 	logicWorld =  new G4LogicalVolume(solidWorld, air, "logicWorld");
@@ -421,15 +435,6 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// red source "puck"
 	attr = new G4VisAttributes(G4Colour(0.9, 0.0, 0.0, 0.5));
 	logicSource->SetVisAttributes(attr);
-	// Declare rotation angle
-	G4double phi = 90*deg;
-	// Declare vectors to construct rotation matrices
-	G4ThreeVector u = G4ThreeVector(0, 0, -1);
-	G4ThreeVector v = G4ThreeVector(-std::sin(phi), std::cos(phi), 0);
-	G4ThreeVector w = G4ThreeVector(std::cos(phi), std::sin(phi), 0);
-	// Declare rotation matrices to use for LG's and PMT sensitive volumes, with yRot rotating to the -yface
-	G4RotationMatrix *xRot = new G4RotationMatrix(-u, v, w);
-	G4RotationMatrix *yRot = new G4RotationMatrix(v, -u, w);
 	yPos = yWorld/4 + yVoxelSize/2 + 1*cm + 0.125*in;
 	physSource = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicSource, "physSource", logicWorld, false, 0, true);/**/
 	// PVT Cube
@@ -443,7 +448,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = 10*cm + xVoxelSize/2;
 	yPos = yWorld/4 + yVoxelSize/2 + 1*cm + 0.125*in;
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 0, true);
-	// LG with PMT
+	// LG for PMT
 	solidLGTrd = new G4Trd("solidLGTrd", xVoxelSize/2, lenLGBase/2, yVoxelSize/2, lenLGBase/2, lenLGTaper/2);
 	solidLGCone = new G4Cons("solidLGCone", 0.*cm, r1_LG, 0.*cm, r2_LG, lenLGTaper/2, 0, 360*deg);
 	// Define the light guide from the intersection of the two solids defined above
@@ -465,7 +470,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	logicPMTLens->SetVisAttributes(attr);
 	yPos = yWorld/4 + yVoxelSize + lenLGTaper + 1*cm + 0.125*in + tGlass/2;
 	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 0, true);
-	// Define "PMT's"
+	// Define "PMT(s)"
 	solidPMT = new G4Tubs("solidPMT", 0, r2_LG, lenPMT/2, 0, 360*deg);
 	logicPMT = new G4LogicalVolume(solidPMT, air, "logicPMT");
 	// make PMT volumes purple cylinders
@@ -473,6 +478,14 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	logicPMT->SetVisAttributes(attr);
 	yPos = yWorld/4 + yVoxelSize + lenLGTaper + 1*cm + 0.125*in + tGlass + lenPMT/2;
 	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 0, true);/**/
+	// Define "PMT" housing
+	solidPMTshield = new G4Tubs("solidPMTshield", 0, rPMT, lenPMT/2 + (rPMT - r2_LG)/2, 0, 360*deg);
+	solidPMTshieldwall = new G4SubtractionSolid("solidPMTshieldwall", solidPMTshield, solidPMT);
+	logicPMTshieldwall = new G4LogicalVolume(solidPMTshieldwall, mumetal, "logicPMTshieldwall");
+	// make mumetal shield gray and almost transparent
+	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.05));
+	logicPMTshieldwall->SetVisAttributes(attr);
+	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 0, true);/**/
 	// return value
 	return physWorld;
 }
@@ -482,7 +495,7 @@ void PVTcubeDetectorConstruction::ConstructSDandField()
 	// Get SDM pointer for creating new detectors
 	G4SDManager *SDman = G4SDManager::GetSDMpointer();
 	// Define PMT's as sensitive volumes
-	/*detPMT = new NuLatPMTSensitiveDetector("/NuLatPMT", xVoxels, yVoxels, zVoxels);
+	detPMT = new PVTcubePMTSensitiveDetector("/PVTcubePMT");
 	SDman->AddNewDetector(detPMT);
 	logicPMT->SetSensitiveDetector(detPMT);/**/
 	// Define Voxels as sensitive volumes -- TODO: Re-define as primitve scoring volume for energy depositions (see Example B4d) (Remove NuLatVoxelSensitiveDetector class?)

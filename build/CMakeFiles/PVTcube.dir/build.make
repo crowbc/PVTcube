@@ -139,10 +139,24 @@ CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jack/Documents/geant4/PVTcube/src/PVTcubeGenerator.cc -o CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.s
 
+CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o: CMakeFiles/PVTcube.dir/flags.make
+CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o: /home/jack/Documents/geant4/PVTcube/src/PVTcubePMTsensitiveDetector.cc
+CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o: CMakeFiles/PVTcube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jack/Documents/geant4/PVTcube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o -MF CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o.d -o CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o -c /home/jack/Documents/geant4/PVTcube/src/PVTcubePMTsensitiveDetector.cc
+
+CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jack/Documents/geant4/PVTcube/src/PVTcubePMTsensitiveDetector.cc > CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.i
+
+CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jack/Documents/geant4/PVTcube/src/PVTcubePMTsensitiveDetector.cc -o CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.s
+
 CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o: CMakeFiles/PVTcube.dir/flags.make
 CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o: /home/jack/Documents/geant4/PVTcube/src/PVTcubePhysics.cc
 CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o: CMakeFiles/PVTcube.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jack/Documents/geant4/PVTcube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jack/Documents/geant4/PVTcube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o -MF CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o.d -o CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o -c /home/jack/Documents/geant4/PVTcube/src/PVTcubePhysics.cc
 
 CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.s: cmake_force
 CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o: CMakeFiles/PVTcube.dir/flags.make
 CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o: /home/jack/Documents/geant4/PVTcube/src/PVTcubeRun.cc
 CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o: CMakeFiles/PVTcube.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jack/Documents/geant4/PVTcube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jack/Documents/geant4/PVTcube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o -MF CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o.d -o CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o -c /home/jack/Documents/geant4/PVTcube/src/PVTcubeRun.cc
 
 CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.i: cmake_force
@@ -174,6 +188,7 @@ PVTcube_OBJECTS = \
 "CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o" \
 "CMakeFiles/PVTcube.dir/src/PVTcubeEvent.cc.o" \
 "CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.o" \
+"CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o" \
 "CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o" \
 "CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o"
 
@@ -185,6 +200,7 @@ PVTcube: CMakeFiles/PVTcube.dir/src/PVTcubeAction.cc.o
 PVTcube: CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o
 PVTcube: CMakeFiles/PVTcube.dir/src/PVTcubeEvent.cc.o
 PVTcube: CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.o
+PVTcube: CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o
 PVTcube: CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o
 PVTcube: CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o
 PVTcube: CMakeFiles/PVTcube.dir/build.make
@@ -230,7 +246,7 @@ PVTcube: /opt/applications/geant4/geant4-v11.1.0-install/lib/libG4global.so
 PVTcube: /opt/applications/geant4/geant4-v11.1.0-install/lib/libG4clhep.so
 PVTcube: /opt/applications/geant4/geant4-v11.1.0-install/lib/libG4ptl.so.2.3.3
 PVTcube: CMakeFiles/PVTcube.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jack/Documents/geant4/PVTcube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable PVTcube"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jack/Documents/geant4/PVTcube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable PVTcube"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PVTcube.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

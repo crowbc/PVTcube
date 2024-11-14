@@ -36,7 +36,7 @@
 #include "G4VisAttributes.hh"
 #include "G4Colour.hh"
 // Header file for user defined libraries
-//#include "PVTcubePMTsensitiveDetector.hh"
+#include "PVTcubePMTsensitiveDetector.hh"
 //#include "PVTcubeVoxelSensitiveDetector.hh"
 // Write the class
 class PVTcubeDetectorConstruction : public G4VUserDetectorConstruction
@@ -53,18 +53,18 @@ private:
 	// Volume declarations - naming convention: solidName for geometry volume definitions, logicName for logical volume definitions and physName for physical volume definitions
 	G4Box *solidWorld, *solidVoxel, *solidLGBox, *solidTableTop, *solidTable, *solidNotePad, *solidDarkBoxOuter, *solidDarkBoxInner/*, *solidSSPlate/**/;
 	G4Trd *solidLGTrd;
-	G4Tubs *solidPMT, *solidPMTGlass, *solidSource;
+	G4Tubs *solidPMT, *solidPMTGlass, *solidSource, *solidPMTshield;
 	G4Cons *solidLGCone;
 	G4Sphere *solidPMTconvex;
-	G4SubtractionSolid *solidPMTLens, *solidDarkBox;
+	G4SubtractionSolid *solidPMTLens, *solidDarkBox, *solidPMTshieldwall;
 	G4IntersectionSolid *solidLG;
-	G4LogicalVolume *logicWorld, *logicVoxel, *fPVTcubeScoringVolume, *logicLGBox, *logicLG, *logicPMT, *logicPMTLens, *logicTableTop, *logicTable, *logicSource, *logicNotePad, *logicDarkBox/*, *logicSSPanel/**/;
-	G4VPhysicalVolume *physWorld, *physVoxel, *physLGBox, *physLG, *physPMT, *physPMTLens, *physTableTop, *physTable, *physSource, *physNotePad, *physDarkBox/*, *physSSPanel/**/;
+	G4LogicalVolume *logicWorld, *logicVoxel, *fPVTcubeScoringVolume, *logicLGBox, *logicLG, *logicPMT, *logicPMTLens, *logicTableTop, *logicTable, *logicSource, *logicNotePad, *logicDarkBox, *logicPMTshieldwall/*, *logicSSPanel/**/;
+	G4VPhysicalVolume *physWorld, *physVoxel, *physLGBox, *physLG, *physPMT, *physPMTLens, *physTableTop, *physTable, *physSource, *physNotePad, *physDarkBox, *physPMTshieldwall/*, *physSSPanel/**/;
 	// Declare optical surfaces
 	G4OpticalSurface *surface_Al, *surface_SS;
 	// Material declarations
 	G4Element *H, *Be, *C, *O, *Si, *Cr, *Fe, *Ni, *Cu, *Mo, *Pb;
-	G4Material *air, *EJ200, *acrylic, *aluminum, *concrete, *stainless, *lead, *borosilicateGlass, *paper, *plywood;
+	G4Material *air, *EJ200, *acrylic, *aluminum, *concrete, *stainless, *lead, *borosilicateGlass, *mumetal, *paper, *plywood;
 	G4MaterialPropertiesTable *mpt_air, *mpt_EJ200, *mpt_acrylic, *mpt_Al, *mpt_SS, *mpt_BorosilicateGlass;
 	// useful constants:
 	// physical constant for computing photon energies or wavelengths: (note - divide by wavelength in nm to get energy in eV, or divide by energy in eV to get wavelength in nm)
@@ -103,6 +103,8 @@ private:
 	const G4double rho_BorosilicateGlass = 2.65*g/cm3;
 	const G4double rindexConst_BorosilicateGlass = 1.55;
 	const G4double aLenConst_BorosilicateGlass = 100.0*cm;
+	// mu metal properties
+	const G4double rho_mumetal = 8.7*g/cm3;
 	// variable declarations
 	// World volume size in x, y and z dimensions
 	G4double xWorld, yWorld, zWorld;
@@ -126,7 +128,7 @@ private:
 	void BuildLGandPMT();
 	virtual void ConstructSDandField();
 	// Pointers for SD's: (uncomment when supporting classes are written)
-	//PVTcubePMTSensitiveDetector *detPMT;
+	PVTcubePMTSensitiveDetector *detPMT;
 	//PVTcubeVoxelSensitiveDetector *detVoxel;
 	// Pointer for primitive scorer
 	G4VPrimitiveScorer *primVoxel;

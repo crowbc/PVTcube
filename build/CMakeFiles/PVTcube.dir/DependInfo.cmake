@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jack/Documents/geant4/PVTcube/src/PVTcubeDetectorConstruction.cc" "CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o.d"
   "/home/jack/Documents/geant4/PVTcube/src/PVTcubeEvent.cc" "CMakeFiles/PVTcube.dir/src/PVTcubeEvent.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubeEvent.cc.o.d"
   "/home/jack/Documents/geant4/PVTcube/src/PVTcubeGenerator.cc" "CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.o.d"
+  "/home/jack/Documents/geant4/PVTcube/src/PVTcubePMTsensitiveDetector.cc" "CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o.d"
   "/home/jack/Documents/geant4/PVTcube/src/PVTcubePhysics.cc" "CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o.d"
   "/home/jack/Documents/geant4/PVTcube/src/PVTcubeRun.cc" "CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o.d"
   )

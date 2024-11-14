@@ -294,6 +294,30 @@ src/PVTcubeGenerator.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PVTcube.dir/build.make CMakeFiles/PVTcube.dir/src/PVTcubeGenerator.cc.s
 .PHONY : src/PVTcubeGenerator.cc.s
 
+src/PVTcubePMTsensitiveDetector.o: src/PVTcubePMTsensitiveDetector.cc.o
+.PHONY : src/PVTcubePMTsensitiveDetector.o
+
+# target to build an object file
+src/PVTcubePMTsensitiveDetector.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PVTcube.dir/build.make CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o
+.PHONY : src/PVTcubePMTsensitiveDetector.cc.o
+
+src/PVTcubePMTsensitiveDetector.i: src/PVTcubePMTsensitiveDetector.cc.i
+.PHONY : src/PVTcubePMTsensitiveDetector.i
+
+# target to preprocess a source file
+src/PVTcubePMTsensitiveDetector.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PVTcube.dir/build.make CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.i
+.PHONY : src/PVTcubePMTsensitiveDetector.cc.i
+
+src/PVTcubePMTsensitiveDetector.s: src/PVTcubePMTsensitiveDetector.cc.s
+.PHONY : src/PVTcubePMTsensitiveDetector.s
+
+# target to generate assembly for a file
+src/PVTcubePMTsensitiveDetector.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PVTcube.dir/build.make CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.s
+.PHONY : src/PVTcubePMTsensitiveDetector.cc.s
+
 src/PVTcubePhysics.o: src/PVTcubePhysics.cc.o
 .PHONY : src/PVTcubePhysics.o
 
@@ -370,6 +394,9 @@ help:
 	@echo "... src/PVTcubeGenerator.o"
 	@echo "... src/PVTcubeGenerator.i"
 	@echo "... src/PVTcubeGenerator.s"
+	@echo "... src/PVTcubePMTsensitiveDetector.o"
+	@echo "... src/PVTcubePMTsensitiveDetector.i"
+	@echo "... src/PVTcubePMTsensitiveDetector.s"
 	@echo "... src/PVTcubePhysics.o"
 	@echo "... src/PVTcubePhysics.i"
 	@echo "... src/PVTcubePhysics.s"

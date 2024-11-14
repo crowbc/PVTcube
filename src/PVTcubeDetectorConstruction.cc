@@ -28,6 +28,19 @@ PVTcubeDetectorConstruction::PVTcubeDetectorConstruction()
 	xWorld = 0.6*m;
 	yWorld = 1.0*m;
 	zWorld = 1.0*m;
+	// set table dimensions
+	w_table = xWorld;
+	h_table = yWorld/2;
+	l_table = zWorld;
+	t_table = 0.25*in;
+	// set note pad dimensions
+	/*w_notepad = 1.5*in;
+	l_notepad = 1.5*in;
+	h_notepad = yVoxelSize/4;/**/
+	// set source "puck" dimensions
+	/*r_source_inner = 0.25*cm;
+	r_source_outer = 0.5*cm;
+	t_source = 0.05*cm;/**/
 	// Define the messenger and declare properties - for now only number of cubes can be varied.
 	fMessenger = new G4GenericMessenger(this, "/detector/", "Detector Construction");// TODO: set up /voxel and other subdirectories
 	fMessenger->DeclareProperty("nCubes", nCubes, "Number of PVT cubes in the set-up");
@@ -395,20 +408,20 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	logicWorld->SetVisAttributes(attr);
 	physWorld = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicWorld, "physWorld", 0, false, 0, true);
 	// make optical table filler
-	solidTable = new G4Box("solidTable", xWorld, yWorld/2, zWorld);
+	solidTable = new G4Box("solidTable", w_table, h_table, l_table);
 	logicTable = new G4LogicalVolume(solidTable, concrete, "logicTable");
 	// off-white color for concrete base
 	attr = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0, 0.2));
 	logicTable->SetVisAttributes(attr);
-	yPos = -yWorld/4;
+	yPos = -h_table/2;
 	physTable = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicTable, "physTable", logicWorld, false, 0, true);/**/
 	// make optical table top
-	solidTableTop = new G4Box("solidTableTop", xWorld, 0.25*in, zWorld);
+	solidTableTop = new G4Box("solidTableTop", w_table, t_table/2, l_table);
 	logicTableTop = new G4LogicalVolume(solidTableTop, stainless, "logicTableTop");
 	// gray color for optical table top
 	attr = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
 	logicTableTop->SetVisAttributes(attr);
-	yPos = yWorld/4 + 0.125*in;
+	yPos = h_table/2 + t_table/2;
 	physTableTop = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicTableTop, "physTableTop", logicWorld, false, 0, true);/**/
 	// wood dark box
 	solidDarkBoxOuter = new G4Box("solidDarkBoxOuter", 22*cm, 22*cm, 60*cm);
@@ -418,7 +431,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// magenta dark box
 	attr = new G4VisAttributes(G4Colour(0.9, 0.0, 0.9, 0.05));
 	logicDarkBox->SetVisAttributes(attr);
-	yPos = yWorld/4 + 22*cm + 0.125*in;
+	yPos = h_table/2 + t_table + 22*cm;
 	physDarkBox = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicDarkBox, "physDarkBox", logicWorld, false, 0, true);/**/
 	// Note pad used as platform for source
 	solidNotePad = new G4Box("solidNotePad", 1.5*in, yVoxelSize/4, 1.5*in);
@@ -426,7 +439,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// make yellow "note pad" stack
 	attr = new G4VisAttributes(G4Colour(0.69,0.69,0.0,0.5));
 	logicNotePad->SetVisAttributes(attr);
-	yPos = yWorld/4 + yVoxelSize/4 + 1*cm + 0.125*in;
+	yPos = h_table/2 + t_table + 1*cm + yVoxelSize/4;
 	zPos = -15.0*cm;
 	physNotePad = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicNotePad, "physNotePad", logicWorld, false, 0, true);
 	// source "puck"
@@ -435,7 +448,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// red source "puck"
 	attr = new G4VisAttributes(G4Colour(0.9, 0.0, 0.0, 0.5));
 	logicSource->SetVisAttributes(attr);
-	yPos = yWorld/4 + yVoxelSize/2 + 1*cm + 0.125*in;
+	yPos = h_table/2 + t_table + 1*cm + yVoxelSize/2+ 0.05*cm;
 	physSource = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicSource, "physSource", logicWorld, false, 0, true);/**/
 	// PVT Cube
 	solidVoxel = new G4Box("solidVoxel", xVoxelSize/2, yVoxelSize/2, zVoxelSize/2);
@@ -446,7 +459,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// Set cube as scoring volume
 	fPVTcubeScoringVolume = logicVoxel;
 	xPos = 10*cm + xVoxelSize/2;
-	yPos = yWorld/4 + yVoxelSize/2 + 1*cm + 0.125*in;
+	yPos = h_table/2 + t_table + 1*cm + yVoxelSize/2;
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 0, true);
 	// LG for PMT
 	solidLGTrd = new G4Trd("solidLGTrd", xVoxelSize/2, lenLGBase/2, yVoxelSize/2, lenLGBase/2, lenLGTaper/2);
@@ -457,7 +470,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// make the LG orange
 	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0,0.4));
 	logicLG->SetVisAttributes(attr);
-	yPos = yWorld/4 + yVoxelSize + lenLGTaper/2 + 1*cm + 0.125*in;
+	yPos = h_table/2 + t_table + 1*cm + yVoxelSize + lenLGTaper/2;
 	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 0, true);
 	// Define Borosilicate Glass boundaries
 	solidPMTGlass = new G4Tubs("solidPMTGlass", 0, rPMT, tGlass/2, 0, 360.*deg);
@@ -468,7 +481,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// make lenses magenta
 	attr = new G4VisAttributes(G4Colour(0.3,0.0,0.2,0.4));
 	logicPMTLens->SetVisAttributes(attr);
-	yPos = yWorld/4 + yVoxelSize + lenLGTaper + 1*cm + 0.125*in + tGlass/2;
+	yPos = h_table/2 + t_table + 1*cm + yVoxelSize + lenLGTaper + tGlass/2;
 	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 0, true);
 	// Define "PMT(s)"
 	solidPMT = new G4Tubs("solidPMT", 0, r2_LG, lenPMT/2, 0, 360*deg);
@@ -476,7 +489,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// make PMT volumes purple cylinders
 	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5,0.5));
 	logicPMT->SetVisAttributes(attr);
-	yPos = yWorld/4 + yVoxelSize + lenLGTaper + 1*cm + 0.125*in + tGlass + lenPMT/2;
+	yPos = h_table/2 + t_table + 1*cm + yVoxelSize + lenLGTaper + tGlass + lenPMT/2;
 	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 0, true);/**/
 	// Define "PMT" housing
 	solidPMTshield = new G4Tubs("solidPMTshield", 0, rPMT, lenPMT/2 + (rPMT - r2_LG)/2, 0, 360*deg);

@@ -7,6 +7,9 @@ Initial build for testing geometry and materials properties, physics of detector
 
 Change log (in reverse chronological order starting from most recent version:)
 
+14NOV2024 -- v 1.1.1: Physical Volume Overlaps
+	Corrected physical volume overlaps in detector construction class.
+
 14NOV2024 -- v 1.1.0: Sensitive Detector Manager
 	Created sensitive detector manager for recording phototube hits using a simple random number generator to simulate PMT quantum efficiency. Added mu metal shield and PMT housing to geometry in detector construction manager class.
 

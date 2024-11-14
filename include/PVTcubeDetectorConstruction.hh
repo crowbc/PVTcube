@@ -108,8 +108,10 @@ private:
 	// variable declarations
 	// World volume size in x, y and z dimensions
 	G4double xWorld, yWorld, zWorld;
+	// Table dimensions
+	G4double w_table, l_table, h_table, t_table;
 	// Detector Parameters (number of voxels in coincidence, length in each dimension, separation distance in x, y and z dimensions -- only defined if nCubes>1)
-	G4int nCubes;// xVoxels, yVoxels, zVoxels;
+	G4int nCubes;
 	G4double xVoxelSize, yVoxelSize, zVoxelSize;
 	G4double xVoxelSep, yVoxelSep, zVoxelSep;
 	//G4double xVCBoxSize, yVCBoxSize, zVCBoxSize;

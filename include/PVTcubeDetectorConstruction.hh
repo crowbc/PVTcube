@@ -51,15 +51,15 @@ public:
 	virtual G4VPhysicalVolume* Construct();
 private:
 	// Volume declarations - naming convention: solidName for geometry volume definitions, logicName for logical volume definitions and physName for physical volume definitions
-	G4Box *solidWorld, *solidVoxel, *solidLGBox, *solidTableTop, *solidTable, *solidNotePad, *solidDarkBoxOuter, *solidDarkBoxInner/*, *solidSSPlate/**/;
+	G4Box *solidWorld, *solidVoxel, *solidLGBox, *solidTableTop, *solidTable, *solidNotePad, *solidDarkBoxOuter, *solidDarkBoxInner, *solidFoilWrapInner, *solidFoilWrapOuter;
 	G4Trd *solidLGTrd;
 	G4Tubs *solidPMT, *solidPMTGlass, *solidSource, *solidPMTshield;
 	G4Cons *solidLGCone;
 	G4Sphere *solidPMTconvex;
-	G4SubtractionSolid *solidPMTLens, *solidDarkBox, *solidPMTshieldwall;
+	G4SubtractionSolid *solidPMTLens, *solidDarkBox, *solidPMTshieldwall, *solidFoilWrap;
 	G4IntersectionSolid *solidLG;
-	G4LogicalVolume *logicWorld, *logicVoxel, *fPVTcubeScoringVolume, *logicLGBox, *logicLG, *logicPMT, *logicPMTLens, *logicTableTop, *logicTable, *logicSource, *logicNotePad, *logicDarkBox, *logicPMTshieldwall/*, *logicSSPanel/**/;
-	G4VPhysicalVolume *physWorld, *physVoxel, *physLGBox, *physLG, *physPMT, *physPMTLens, *physTableTop, *physTable, *physSource, *physNotePad, *physDarkBox, *physPMTshieldwall/*, *physSSPanel/**/;
+	G4LogicalVolume *logicWorld, *logicVoxel, *fPVTcubeScoringVolume, *logicLGBox, *logicLG, *logicPMT, *logicPMTLens, *logicTableTop, *logicTable, *logicSource, *logicNotePad, *logicDarkBox, *logicPMTshieldwall, *logicFoilWrap;
+	G4VPhysicalVolume *physWorld, *physVoxel, *physLGBox, *physLG, *physPMT, *physPMTLens, *physTableTop, *physTable, *physSource, *physNotePad, *physDarkBox, *physPMTshieldwall, *physFoilWrap;
 	// Declare optical surfaces
 	G4OpticalSurface *surface_Al, *surface_SS;
 	// Material declarations

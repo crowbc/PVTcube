@@ -4,7 +4,7 @@
 PVTcubeDetectorConstruction::PVTcubeDetectorConstruction()
 {
 	// Set Parameter Default Values - TODO: set default values in the messenger
-	nCubes = 1;
+	nCubes = 2;
 	// default geometry dimensions
 	xVoxelSize = 2.495*in;
 	yVoxelSize = 2.495*in;
@@ -459,8 +459,23 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// Set cube as scoring volume
 	fPVTcubeScoringVolume = logicVoxel;
 	xPos = 10*cm + xVoxelSize/2;
-	yPos = h_table/2 + t_table + 1*cm + yVoxelSize/2;
+	yPos = h_table/2 + t_table + 1.05*cm + yVoxelSize/2;
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 0, true);
+	xPos = -10*cm - xVoxelSize/2;
+	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 1, true);
+	// Foil "wrap" for PVT cubes
+	solidFoilWrapInner = new G4Box("solidFoilWrapInner", xVoxelSize/2 + 0.45*mm, yVoxelSize/2 + 0.495*mm, zVoxelSize/2 + 0.45*mm);
+	solidFoilWrapOuter = new G4Box("solidFoilWrapOuter", xVoxelSize/2 + 0.5*mm, yVoxelSize/2 + 0.5*mm, zVoxelSize/2 + 0.5*mm);
+	solidFoilWrap = new G4SubtractionSolid("solidFoilWrap", solidFoilWrapOuter, solidFoilWrapInner, 0, G4ThreeVector(0.,0.,0.));
+	logicFoilWrap = new G4LogicalVolume(solidFoilWrap, aluminum, "logicFoilWrap");
+	// gray color for foil "wrap"
+	attr = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
+	logicFoilWrap->SetVisAttributes(attr);
+	xPos = 10*cm + xVoxelSize/2;
+	yPos = h_table/2 + t_table + 1.05*cm + yVoxelSize/2;
+	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 0, true);
+	xPos = -10*cm - xVoxelSize/2;
+	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 1, true);
 	// LG for PMT
 	solidLGTrd = new G4Trd("solidLGTrd", xVoxelSize/2, lenLGBase/2, yVoxelSize/2, lenLGBase/2, lenLGTaper/2);
 	solidLGCone = new G4Cons("solidLGCone", 0.*cm, r1_LG, 0.*cm, r2_LG, lenLGTaper/2, 0, 360*deg);
@@ -470,8 +485,11 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// make the LG orange
 	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0,0.4));
 	logicLG->SetVisAttributes(attr);
-	yPos = h_table/2 + t_table + 1*cm + yVoxelSize + lenLGTaper/2;
+	xPos = 10*cm + xVoxelSize/2;
+	yPos = h_table/2 + t_table + 1.1*cm + yVoxelSize + lenLGTaper/2;
 	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 0, true);
+	xPos = -10*cm - xVoxelSize/2;
+	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 1, true);
 	// Define Borosilicate Glass boundaries
 	solidPMTGlass = new G4Tubs("solidPMTGlass", 0, rPMT, tGlass/2, 0, 360.*deg);
 	solidPMTconvex = new G4Sphere("solidPMTconvex" , 0, rSpherePMTsurf, 0, 360.*deg, 0, 360.*deg);
@@ -481,16 +499,22 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// make lenses magenta
 	attr = new G4VisAttributes(G4Colour(0.3,0.0,0.2,0.4));
 	logicPMTLens->SetVisAttributes(attr);
-	yPos = h_table/2 + t_table + 1*cm + yVoxelSize + lenLGTaper + tGlass/2;
+	xPos = 10*cm + xVoxelSize/2;
+	yPos = h_table/2 + t_table + 1.1*cm + yVoxelSize + lenLGTaper + tGlass/2;
 	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 0, true);
+	xPos = -10*cm - xVoxelSize/2;
+	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 1, true);
 	// Define "PMT(s)"
 	solidPMT = new G4Tubs("solidPMT", 0, r2_LG, lenPMT/2, 0, 360*deg);
 	logicPMT = new G4LogicalVolume(solidPMT, air, "logicPMT");
 	// make PMT volumes purple cylinders
 	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5,0.5));
 	logicPMT->SetVisAttributes(attr);
-	yPos = h_table/2 + t_table + 1*cm + yVoxelSize + lenLGTaper + tGlass + lenPMT/2;
-	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 0, true);/**/
+	xPos = 10*cm + xVoxelSize/2;
+	yPos = h_table/2 + t_table + 1.1*cm + yVoxelSize + lenLGTaper + tGlass + lenPMT/2;
+	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 0, true);
+	xPos = -10*cm - xVoxelSize/2;
+	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 1, true);/**/
 	// Define "PMT" housing
 	solidPMTshield = new G4Tubs("solidPMTshield", 0, rPMT, lenPMT/2 + (rPMT - r2_LG)/2, 0, 360*deg);
 	solidPMTshieldwall = new G4SubtractionSolid("solidPMTshieldwall", solidPMTshield, solidPMT);
@@ -498,7 +522,10 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// make mumetal shield gray and almost transparent
 	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.05));
 	logicPMTshieldwall->SetVisAttributes(attr);
-	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 0, true);/**/
+	xPos = 10*cm + xVoxelSize/2;
+	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 0, true);
+	xPos = -10*cm - xVoxelSize/2;
+	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 1, true);/**/
 	// return value
 	return physWorld;
 }

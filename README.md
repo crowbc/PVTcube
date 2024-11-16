@@ -7,6 +7,9 @@ Initial build for testing geometry and materials properties, physics of detector
 
 Change log (in reverse chronological order starting from most recent version:)
 
+15NOV2024 -- v 1.2.0: Two-fold Coincidence
+	Added a second detector voxel, photomultiplier tube, lens and mu metal shield to simulate two-fold coincidence. Added aluminum foil wrapping to PVT cubes to simulate actual set-up and to eliminate optical cross-talk.
+
 14NOV2024 -- v 1.1.1: Physical Volume Overlaps
 	Corrected physical volume overlaps in detector construction class.
 

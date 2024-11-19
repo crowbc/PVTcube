@@ -459,20 +459,20 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	// Set cube as scoring volume
 	fPVTcubeScoringVolume = logicVoxel;
 	xPos = 10*cm + xVoxelSize/2;
-	yPos = h_table/2 + t_table + 1.05*cm + yVoxelSize/2;
+	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize/2;
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 1, true);
 	// Foil "wrap" for PVT cubes
-	solidFoilWrapInner = new G4Box("solidFoilWrapInner", xVoxelSize/2 + 0.45*mm, yVoxelSize/2 + 0.495*mm, zVoxelSize/2 + 0.45*mm);
-	solidFoilWrapOuter = new G4Box("solidFoilWrapOuter", xVoxelSize/2 + 0.5*mm, yVoxelSize/2 + 0.5*mm, zVoxelSize/2 + 0.5*mm);
+	solidFoilWrapInner = new G4Box("solidFoilWrapInner", xVoxelSize/2 + 0.45*mm, yVoxelSize/2, zVoxelSize/2 + 0.45*mm);
+	solidFoilWrapOuter = new G4Box("solidFoilWrapOuter", xVoxelSize/2 + 0.5*mm, yVoxelSize/2, zVoxelSize/2 + 0.5*mm);
 	solidFoilWrap = new G4SubtractionSolid("solidFoilWrap", solidFoilWrapOuter, solidFoilWrapInner, 0, G4ThreeVector(0.,0.,0.));
 	logicFoilWrap = new G4LogicalVolume(solidFoilWrap, aluminum, "logicFoilWrap");
 	// gray color for foil "wrap"
 	attr = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
 	logicFoilWrap->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
-	yPos = h_table/2 + t_table + 1.05*cm + yVoxelSize/2;
+	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize/2;
 	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 1, true);
@@ -486,7 +486,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0,0.4));
 	logicLG->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
-	yPos = h_table/2 + t_table + 1.1*cm + yVoxelSize + lenLGTaper/2;
+	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize + lenLGTaper/2;
 	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 1, true);
@@ -500,18 +500,18 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	attr = new G4VisAttributes(G4Colour(0.3,0.0,0.2,0.4));
 	logicPMTLens->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
-	yPos = h_table/2 + t_table + 1.1*cm + yVoxelSize + lenLGTaper + tGlass/2;
+	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize + lenLGTaper + tGlass/2;
 	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 1, true);
 	// Define "PMT(s)"
-	solidPMT = new G4Tubs("solidPMT", 0, r2_LG, lenPMT/2, 0, 360*deg);
+	solidPMT = new G4Tubs("solidPMT", 0, rPMT, lenPMT/2, 0, 360*deg);
 	logicPMT = new G4LogicalVolume(solidPMT, air, "logicPMT");
 	// make PMT volumes purple cylinders
 	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5,0.5));
 	logicPMT->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
-	yPos = h_table/2 + t_table + 1.1*cm + yVoxelSize + lenLGTaper + tGlass + lenPMT/2;
+	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize + lenLGTaper + tGlass + lenPMT/2;
 	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 1, true);/**/
@@ -525,7 +525,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = 10*cm + xVoxelSize/2;
 	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
-	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 1, true);/**/
+	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 1, true);
 	// return value
 	return physWorld;
 }

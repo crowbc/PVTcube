@@ -1,9 +1,9 @@
 /*
 	File: PVTcube.cc
 	Author: Brian Crow
-	Date: 15NOV2024
+	Date: 18NOV2024
 	Description: This code is for simulation of an individual PVT detector cube and ensembles of identical cubes. See README for notes and change log.
-	Version: 1.2.0 Two-fold Coincidence Update
+	Version: 1.2.1 Foil Covering Fix
 */
 // Included C++ libraries
 #include <iostream>

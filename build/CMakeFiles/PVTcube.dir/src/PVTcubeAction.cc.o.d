@@ -580,6 +580,10 @@ CMakeFiles/PVTcube.dir/src/PVTcubeAction.cc.o: \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GenericFileManager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GenericFileManager.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Run.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalVolume.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalVolumeStore.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VStoreNotifier.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VNotifier.hh \
  /home/jack/Documents/geant4/PVTcube/include/PVTcubeEvent.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UserEventAction.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Event.hh \

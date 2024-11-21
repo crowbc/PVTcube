@@ -26,5 +26,5 @@ void PVTcubeActionInitialization::Build() const
 	SetUserAction(eventAction);
 	// Stepping Action
 	/*PVTcubeSteppingAction *steppingAction = new PVTcubeSteppingAction(eventAction);
-	SetUserAction(steppingAction);/**/
+	SetUserAction(steppingAction);*/
 }

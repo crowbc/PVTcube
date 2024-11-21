@@ -1,9 +1,14 @@
-CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
- /home/jack/Documents/geant4/PVTcube/src/PVTcubeDetectorConstruction.cc \
+CMakeFiles/PVTcube.dir/src/PVTcubeVoxelSensitiveDetector.cc.o: \
+ /home/jack/Documents/geant4/PVTcube/src/PVTcubeVoxelSensitiveDetector.cc \
  /usr/include/stdc-predef.h \
- /home/jack/Documents/geant4/PVTcube/include/PVTcubeDetectorConstruction.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VUserDetectorConstruction.hh \
- /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
+ /home/jack/Documents/geant4/PVTcube/include/PVTcubeVoxelSensitiveDetector.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSensitiveDetector.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VHit.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/globals.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ios.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Types.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GlobalConfig.hh \
+ /usr/include/c++/13/complex \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -15,50 +20,9 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
  /usr/include/c++/13/pstl/pstl_config.h \
- /usr/include/c++/13/bits/stl_algobase.h \
- /usr/include/c++/13/bits/functexcept.h \
- /usr/include/c++/13/bits/exception_defines.h \
  /usr/include/c++/13/bits/cpp_type_traits.h \
- /usr/include/c++/13/ext/type_traits.h \
- /usr/include/c++/13/ext/numeric_traits.h \
- /usr/include/c++/13/bits/stl_pair.h /usr/include/c++/13/type_traits \
- /usr/include/c++/13/bits/move.h /usr/include/c++/13/bits/utility.h \
- /usr/include/c++/13/bits/stl_iterator_base_types.h \
- /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
- /usr/include/c++/13/bits/concept_check.h \
- /usr/include/c++/13/debug/assertions.h \
- /usr/include/c++/13/bits/stl_iterator.h \
- /usr/include/c++/13/bits/ptr_traits.h /usr/include/c++/13/debug/debug.h \
- /usr/include/c++/13/bits/predefined_ops.h /usr/include/c++/13/bit \
- /usr/include/c++/13/bits/allocator.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
- /usr/include/c++/13/bits/new_allocator.h /usr/include/c++/13/new \
- /usr/include/c++/13/bits/exception.h \
- /usr/include/c++/13/bits/memoryfwd.h \
- /usr/include/c++/13/bits/stl_construct.h \
- /usr/include/c++/13/bits/stl_uninitialized.h \
- /usr/include/c++/13/ext/alloc_traits.h \
- /usr/include/c++/13/bits/alloc_traits.h \
- /usr/include/c++/13/bits/stl_vector.h \
- /usr/include/c++/13/initializer_list \
- /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/functional_hash.h \
- /usr/include/c++/13/bits/hash_bytes.h /usr/include/c++/13/bits/refwrap.h \
- /usr/include/c++/13/bits/invoke.h \
- /usr/include/c++/13/bits/stl_function.h \
- /usr/include/c++/13/backward/binders.h \
- /usr/include/c++/13/bits/range_access.h \
- /usr/include/c++/13/bits/vector.tcc \
- /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
- /usr/include/c++/13/bits/uses_allocator.h \
- /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/globals.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ios.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Types.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GlobalConfig.hh \
- /usr/include/c++/13/complex /usr/include/c++/13/cmath \
- /usr/include/math.h \
+ /usr/include/c++/13/ext/type_traits.h /usr/include/c++/13/cmath \
+ /usr/include/c++/13/bits/requires_hosted.h /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
@@ -75,6 +39,7 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
  /usr/include/c++/13/bits/std_abs.h /usr/include/stdlib.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
@@ -102,8 +67,21 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/limits \
- /usr/include/c++/13/tr1/gamma.tcc \
+ /usr/include/c++/13/bits/specfun.h \
+ /usr/include/c++/13/bits/stl_algobase.h \
+ /usr/include/c++/13/bits/functexcept.h \
+ /usr/include/c++/13/bits/exception_defines.h \
+ /usr/include/c++/13/ext/numeric_traits.h \
+ /usr/include/c++/13/bits/stl_pair.h /usr/include/c++/13/type_traits \
+ /usr/include/c++/13/bits/move.h /usr/include/c++/13/bits/utility.h \
+ /usr/include/c++/13/bits/stl_iterator_base_types.h \
+ /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/13/bits/concept_check.h \
+ /usr/include/c++/13/debug/assertions.h \
+ /usr/include/c++/13/bits/stl_iterator.h \
+ /usr/include/c++/13/bits/ptr_traits.h /usr/include/c++/13/debug/debug.h \
+ /usr/include/c++/13/bits/predefined_ops.h /usr/include/c++/13/bit \
+ /usr/include/c++/13/limits /usr/include/c++/13/tr1/gamma.tcc \
  /usr/include/c++/13/tr1/special_function_util.h \
  /usr/include/c++/13/tr1/bessel_function.tcc \
  /usr/include/c++/13/tr1/beta_function.tcc \
@@ -117,17 +95,20 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/sstream \
  /usr/include/c++/13/istream /usr/include/c++/13/ios \
  /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/stringfwd.h \
- /usr/include/c++/13/bits/postypes.h /usr/include/c++/13/cwchar \
- /usr/include/wchar.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
+ /usr/include/c++/13/bits/memoryfwd.h /usr/include/c++/13/bits/postypes.h \
+ /usr/include/c++/13/cwchar /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
- /usr/include/c++/13/exception /usr/include/c++/13/bits/exception_ptr.h \
+ /usr/include/c++/13/exception /usr/include/c++/13/bits/exception.h \
+ /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
- /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
+ /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/hash_bytes.h \
+ /usr/include/c++/13/new /usr/include/c++/13/bits/nested_exception.h \
  /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/localefwd.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h \
@@ -151,9 +132,21 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
  /usr/include/c++/13/bits/locale_classes.h /usr/include/c++/13/string \
+ /usr/include/c++/13/bits/allocator.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
+ /usr/include/c++/13/bits/new_allocator.h \
  /usr/include/c++/13/bits/ostream_insert.h \
  /usr/include/c++/13/bits/cxxabi_forced.h \
- /usr/include/c++/13/bits/basic_string.h /usr/include/c++/13/string_view \
+ /usr/include/c++/13/bits/stl_function.h \
+ /usr/include/c++/13/backward/binders.h \
+ /usr/include/c++/13/bits/refwrap.h /usr/include/c++/13/bits/invoke.h \
+ /usr/include/c++/13/bits/range_access.h \
+ /usr/include/c++/13/initializer_list \
+ /usr/include/c++/13/bits/basic_string.h \
+ /usr/include/c++/13/ext/alloc_traits.h \
+ /usr/include/c++/13/bits/alloc_traits.h \
+ /usr/include/c++/13/bits/stl_construct.h /usr/include/c++/13/string_view \
+ /usr/include/c++/13/bits/functional_hash.h \
  /usr/include/c++/13/bits/string_view.tcc \
  /usr/include/c++/13/ext/string_conversions.h /usr/include/c++/13/cstdlib \
  /usr/include/c++/13/cstdio /usr/include/stdio.h \
@@ -169,6 +162,9 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \
+ /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
+ /usr/include/c++/13/bits/uses_allocator.h \
+ /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /usr/include/c++/13/bits/locale_classes.tcc \
  /usr/include/c++/13/system_error \
  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
@@ -231,14 +227,19 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/include/c++/13/bits/parse_numbers.h \
  /usr/include/c++/13/bits/std_mutex.h \
- /usr/include/c++/13/bits/unique_lock.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPhysicalVolume.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/geomdefs.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RotationMatrix.hh \
+ /usr/include/c++/13/bits/unique_lock.h /usr/include/c++/13/vector \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_vector.h \
+ /usr/include/c++/13/bits/stl_bvector.h \
+ /usr/include/c++/13/bits/vector.tcc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Step.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ThreeVector.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/ThreeVector.h \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Utility/defs.h \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/ThreeVector.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPhysicalVolume.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/geomdefs.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RotationMatrix.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/Rotation.h \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/RotationInterfaces.h \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/LorentzVector.h \
@@ -272,12 +273,15 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /usr/include/c++/13/bits/std_thread.h /usr/include/c++/13/thread \
  /usr/include/c++/13/bits/this_thread_sleep.h \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPhysicalVolume.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalVolume.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Region.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Region.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPhysicalVolume.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalVolume.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NistManager.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4StepPoint.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Allocator.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AllocatorPool.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SteppingControl.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4StepStatus.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TouchableHandle.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VTouchable.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VTouchable.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ReferenceCountedHandle.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Material.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Element.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Isotope.hh \
@@ -305,69 +309,10 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4DataVector.icc \
  /usr/include/assert.h \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MaterialTable.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NistElementBuilder.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NistMaterialBuilder.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ICRU90StoppingData.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Pow.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Exp.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SystemOfUnits.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4PhysicalConstants.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4PVPlacement.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Transform3D.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Transform3D.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Transform3D.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Point3D.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/BasicVector3D.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Vector3D.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Normal3D.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4PVParameterised.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4PVReplica.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Box.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GeomTypes.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GeomConfig.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4CSGSolid.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSolid.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSolid.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Polyhedron.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/HepPolyhedron.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TwoVector.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/TwoVector.h \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Vector/TwoVector.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Point3D.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Normal3D.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Visible.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Visible.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Box.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Cons.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Cons.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Orb.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Orb.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Sphere.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Sphere.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Trd.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Trd.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Tubs.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Tubs.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4IntersectionSolid.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4BooleanSolid.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4DisplacedSolid.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AffineTransform.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AffineTransform.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4BooleanSolid.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SubtractionSolid.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSensitiveDetector.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VHit.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Step.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4StepPoint.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Allocator.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AllocatorPool.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SteppingControl.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4StepStatus.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TouchableHandle.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VTouchable.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VTouchable.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ReferenceCountedHandle.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalVolume.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Region.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Region.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalVolume.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4StepPoint.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TrackVector.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Profiler.hh \
@@ -407,6 +352,15 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SensitiveVolumeList.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TouchableHistory.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NavigationHistory.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AffineTransform.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Transform3D.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Transform3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Transform3D.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Point3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/BasicVector3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Vector3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/CLHEP/Geometry/Normal3D.h \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AffineTransform.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NavigationLevel.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NavigationLevelRep.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NavigationLevelRep.icc \
@@ -416,43 +370,6 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TouchableHistory.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4CollectionNameVector.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSDFilter.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SDManager.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SDStructure.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSensitiveDetector.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4HCtable.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MultiFunctionalDetector.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPrimitiveScorer.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4MultiFunctionalDetector.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4PSEnergyDeposit.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPrimitivePlotter.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VPrimitiveScorer.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4THitsMap.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4THitsCollection.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4PSTrackLength.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4OpticalSurface.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Physics2DVector.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Physics2DVector.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SurfaceProperty.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalSkinSurface.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalSurface.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalSurface.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4LogicalSkinSurface.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GenericMessenger.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UImessenger.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UIdirectory.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UIcommand.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UIparameter.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UItokenNum.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ApplicationState.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AnyType.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AnyMethod.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VisAttributes.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/graphics_reps_defs.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Colour.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Color.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VisAttributes.icc \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Colour.hh \
- /home/jack/Documents/geant4/PVTcube/include/PVTcubePMTsensitiveDetector.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManager.hh \
  /usr/include/c++/13/list /usr/include/c++/13/bits/stl_list.h \
  /usr/include/c++/13/bits/list.tcc \
@@ -539,6 +456,8 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GRSSolid.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TouchableHistoryHandle.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NormalNavigation.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSolid.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSolid.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AuxiliaryNavServices.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AuxiliaryNavServices.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4NormalNavigation.icc \
@@ -581,8 +500,15 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSteppingVerbose.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/trkgdefs.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TrackingMessenger.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UImessenger.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UIdirectory.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UIcommand.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UIparameter.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UItokenNum.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ApplicationState.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UserTrackingAction.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4RunManagerKernel.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SystemOfUnits.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4AnalysisManager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GenericAnalysisManager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4ToolsAnalysisManager.hh \
@@ -643,10 +569,13 @@ CMakeFiles/PVTcube.dir/src/PVTcubeDetectorConstruction.cc.o: \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GenericAnalysisManager.icc \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GenericFileManager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4GenericFileManager.icc \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4HCofThisEvent.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TouchableHistory.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Track.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Step.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SDManager.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SDStructure.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSensitiveDetector.hh \
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4HCtable.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4TrackingManager.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4EventManager.hh \
- /home/jack/Documents/geant4/PVTcube/include/PVTcubeVoxelSensitiveDetector.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4HCofThisEvent.hh
+ /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4EventManager.hh

@@ -7,6 +7,9 @@ Initial build for testing geometry and materials properties, physics of detector
 
 Change log (in reverse chronological order starting from most recent version:)
 
+20NOV2024 -- v 1.3.0 Scoring Volume Update
+	Added voxel sensitive detector class and registered voxels as scoring volumes in SD manager. Implemented scoring N-Tuples in sensitive detector class.
+
 18NOV2024 -- v 1.2.1: Foil Covering Fix
 	Removed the +y surface of the foil covering to unblock the PMT and light guide assembly from optical contact with the PVT cube. Adjusted "PMT" radius to correct value.
 

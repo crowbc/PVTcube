@@ -33,19 +33,19 @@ PVTcubeDetectorConstruction::PVTcubeDetectorConstruction()
 	h_table = yWorld/2;
 	l_table = zWorld;
 	t_table = 0.25*in;
+	// foil thickness
+	t_foil = 0.02*mm;
 	// set note pad dimensions
-	/*w_notepad = 1.5*in;
+	w_notepad = 1.5*in;
 	l_notepad = 1.5*in;
-	h_notepad = yVoxelSize/4;/**/
+	h_notepad = yVoxelSize/4;
 	// set source "puck" dimensions
-	/*r_source_inner = 0.25*cm;
+	r_source_inner = 0.25*cm;
 	r_source_outer = 0.5*cm;
-	t_source = 0.05*cm;/**/
+	t_source = 0.05*cm;
 	// Define the messenger and declare properties - for now only number of cubes can be varied.
-	fMessenger = new G4GenericMessenger(this, "/detector/", "Detector Construction");// TODO: set up /voxel and other subdirectories
+	fMessenger = new G4GenericMessenger(this, "/detector/", "Detector Construction");
 	fMessenger->DeclareProperty("nCubes", nCubes, "Number of PVT cubes in the set-up");
-	//fMessenger->DeclareProperty("yVoxels", yVoxels, "Number of voxels (cubes) in the y-dimension");// TODO: set position of cube(s) using messenger
-	//fMessenger->DeclareProperty("zVoxels", zVoxels, "Number of voxels (cubes) in the z-dimension");
 	// Define Detector Construction Materials
 	DefineMaterials();
 }
@@ -183,7 +183,7 @@ void PVTcubeDetectorConstruction::DefineMaterials()
 	mpt_EJ200->AddConstProperty("SCINTILLATIONTIMECONSTANT1", dt_EJ200);
 	mpt_EJ200->AddConstProperty("SCINTILLATIONRISETIME1", rt_EJ200);
 	mpt_EJ200->AddConstProperty("RESOLUTIONSCALE", 1.0);
-	mpt_EJ200->AddConstProperty("SCINTILLATIONYIELD1", 1.0);/**/
+	mpt_EJ200->AddConstProperty("SCINTILLATIONYIELD1", 1.0);
 	EJ200->SetMaterialPropertiesTable(mpt_EJ200);
 	mpt_acrylic = new G4MaterialPropertiesTable();
 	mpt_acrylic->AddProperty("RINDEX", photonEnergy, rindex_acrylic, nI);
@@ -213,178 +213,6 @@ void PVTcubeDetectorConstruction::DefineMaterials()
 	// Print Materials Table
 	G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 }
-// Build Calorimeter Box and Voxels, using calorimeter box as mother volume for voxels -- not used
-/*void NuLatDetectorConstruction::BuildVCBox()
-{
-	// Define position variables
-	G4double xPos, yPos, zPos;
-	// Define Visual Attributes object for adjusting coloring and visibility of various components
-	attr = new G4VisAttributes(G4Colour(0.9,0.0,0.0,0.05));
-	// Define Calorimeter
-	solidVCBox = new G4Box("solidVCBox", xVCBoxSize/2, yVCBoxSize/2, zVCBoxSize/2);
-	logicVCBox = new G4LogicalVolume(solidVCBox, air, "logicVCBox");
-	// make VCBox red in color
-	logicVCBox->SetVisAttributes(attr);
-	physVCBox = new G4PVPlacement(0, G4ThreeVector(0.,0.,0.), logicVCBox, "physVCBox", logicWorld, false, 0, true);
-	// Do Voxel Parameterization
-	solidVoxel = new G4Box("solidVoxel", xVoxelSize/2, yVoxelSize/2, zVoxelSize/2);
-	logicVoxel = new G4LogicalVolume(solidVoxel, EJ200, "logicVoxel");
-	// make yellow colored voxels
-	attr = new G4VisAttributes(G4Colour(0.9,0.9,0.0,0.4));
-	logicVoxel->SetVisAttributes(attr);
-	// Set NuLat voxel as NuLat scoring volume
-	fNuLatScoringVolume = logicVoxel;
-	// for loop to create xVoxels X yVoxels X zVoxels array of Voxel Physical Volumes
-	for(G4int k=0; k<zVoxels; k++)
-	{
-		zPos = (k+1.)*zVoxelSpace+(k+0.5)*zVoxelSize-zVCBoxSize/2;
-		for(G4int j=0; j<yVoxels; j++)
-		{
-			yPos = (j+1.)*yVoxelSpace+(j+0.5)*yVoxelSize-yVCBoxSize/2;
-			for(G4int i=0; i<xVoxels; i++)
-			{
-				xPos = (i+1.)*xVoxelSpace+(i+0.5)*xVoxelSize-xVCBoxSize/2;
-				physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicVCBox, false, i+j*xVoxels+k*xVoxels*yVoxels, true);
-			}
-		}
-	}
-}/**/
-// Acrylic Box constructor -- not used
-/*void NuLatDetectorConstruction::BuildAcrylicBox()
-{
-	// Define visualization attributes for acrylic box (off-white color)
-	attr = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0, 0.2));
-	// Define volume for acrilic box and subtraction solid
-	solidAcrylicBoxInner = new G4Box("solidAcrylicBoxInner", xVCBoxSize/2, yVCBoxSize/2, zVCBoxSize/2);
-	solidAcrylicBoxOuter = new G4Box("solidAcrylicBoxOuter", xVCBoxSize/2+tAcrylicPanel, yVCBoxSize/2+tAcrylicPanel, zVCBoxSize/2+tAcrylicPanel);
-	solidAcrylicBox = new G4SubtractionSolid("solidAcrylicBox", solidAcrylicBoxOuter, solidAcrylicBoxInner, 0, G4ThreeVector(0.,0.,0.));
-	logicAcrylicBox = new G4LogicalVolume(solidAcrylicBox, acrylic, "logicAcrylicBox");
-	logicAcrylicBox->SetVisAttributes(attr);
-	physAcrylicBox = new G4PVPlacement(0, G4ThreeVector(0.,0.,0.), logicAcrylicBox, "physAcrylicBox", logicWorld, false, 0, true);
-}/**/
-//  Light Guide with PMT constructor -- TODO: add stainless steel PMT supports
-/*void PVTcubeDetectorConstruction::BuildLGandPMT()
-{
-	// Define Visual Attributes object for adjusting coloring and visibility of various components
-	G4double dx1 = xVoxelSize+xVoxelSpace-0.05*in;
-	G4double dx2 = 46.*mm;
-	G4double dy1 = yVoxelSize+yVoxelSpace-0.05*in;
-	G4double dy2 = 46.*mm;
-	G4double dz = lenLGTaper;
-	G4double xPos, yPos, zPos;
-	// Declace rotation angle
-	G4double phi = 90*deg;
-	// Declare vectors to construct rotation matrices
-	G4ThreeVector u = G4ThreeVector(0, 0, -1);
-	G4ThreeVector v = G4ThreeVector(-std::sin(phi), std::cos(phi), 0);
-	G4ThreeVector w = G4ThreeVector(std::cos(phi), std::sin(phi), 0);
-	// Declare rotation matrices to use for LG's and PMT sensitive volumes, with yRot rotating to the -yface
-	G4RotationMatrix *xRot = new G4RotationMatrix(-u, v, w);
-	G4RotationMatrix *yRot = new G4RotationMatrix(v, u, w);
-	// Define the trapezoidal solid and cone solid for the light guides
-	solidLGTrd = new G4Trd("solidLGTrd", dx1/2, dx2/2, dy1/2, dy2/2, dz/2);
-	G4double r1 = 3.465*in/2;
-	G4double r2 = 1.811*in/2;
-	solidLGCone = new G4Cons("solidLGCone", 0.*cm, r1, 0.*cm, r2, dz/2, 0, 360*deg);
-	// Define the light guide from the intersection of the two solids defined above
-	solidLG = new G4IntersectionSolid("solidLG", solidLGTrd, solidLGCone);
-	logicLG = new G4LogicalVolume(solidLG, acrylic, "logicLG");
-	// make these orange just to stand out
-	attr = new G4VisAttributes(G4Colour(0.7,0.3,0.0,0.4));
-	logicLG->SetVisAttributes(attr);
-	// stainless steel plate
-	/*solidSSPlate = new G4Box("solidSSPlate", xdim, ydim, zdim);
-	solidSSPlateHole = new G4Tubs("solidSSPlateHole", 0, router, 0., 360.*deg);
-	solidSSPanel = new G4SubtractionSolid("solidSSPanel", solidSSPlate, solidSSPlateHole, params);
-	logicSSPanel = new G4LogicalVolume(solidSSPanel, stainless, "logicSSPanel");
-	// make PMT plates gray
-	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.5));
-	logicSSPMTPlate->SetVisAttributes(attr);/**/
-	// make +z light guides
-	/*zPos = zVCBoxSize/2+tAcrylicPanel+dz/2;
-	for (G4int i=0; i<xVoxels; i++)
-	{
-		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
-		for(G4int j=0; j<yVoxels; j++)
-		{
-			yPos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
-			physLG = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*yVoxels+j, true);
-		}
-	}
-	// make +x light guides
-	xPos = xVCBoxSize/2+tAcrylicPanel+dz/2;
-	for (G4int i=0; i<yVoxels; i++)
-	{
-		yPos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
-		for(G4int j=0; j<zVoxels; j++)
-		{
-			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
-			physLG = new G4PVPlacement(xRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
-		}
-	}
-	// make -y light guides
-	yPos = -yVCBoxSize/2-tAcrylicPanel-dz/2;
-	for (G4int i=0; i<xVoxels; i++)
-	{
-		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
-		for(G4int j=0; j<zVoxels; j++)
-		{
-			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
-			physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
-		}
-	}
-	// Define Borosilicate Glass boundaries
-	solidPMTGlass = new G4Tubs("solidPMTGlass", 0, rPMT, tGlass/2, 0, 360.*deg);
-	solidPMTconvex = new G4Sphere("solidPMTconvex" , 0, rSpherePMTsurf, 0, 360.*deg, 0, 360.*deg);
-	// Define PMT Lens (to simulate reflections at PMT/LG boundary)
-	solidPMTLens = new G4SubtractionSolid("solidPMTLens", solidPMTGlass, solidPMTconvex, 0, G4ThreeVector(0,0,rSpherePMTsurf-tGlass/2+tGlass_min));
-	logicPMTLens = new G4LogicalVolume(solidPMTLens, borosilicateGlass, "logicPMTLens");
-	// make lenses magenta
-	attr = new G4VisAttributes(G4Colour(0.3,0.0,0.2,0.4));
-	logicPMTLens->SetVisAttributes(attr);
-	// Define "PMT's"
-	solidPMT = new G4Tubs("solidPMT", 0, r2, lenPMT/2, 0, 360*deg);
-	logicPMT = new G4LogicalVolume(solidPMT, air, "logicPMT");
-	// make PMT volumes purple cylinders
-	attr = new G4VisAttributes(G4Colour(0.5,0.0,0.5,0.5));
-	logicPMT->SetVisAttributes(attr);
-	// make +z "PMT's" and lenses
-	zPos = zVCBoxSize/2+tAcrylicPanel+dz+tGlass/2;
-	for (G4int i=0; i<xVoxels; i++)
-	{
-		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
-		for(G4int j=0; j<yVoxels; j++)
-		{
-			yPos = -yVCBoxSize/2+j*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
-			physPMTLens = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, i*yVoxels+j, true);
-			physPMT = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos+lenPMT/2), logicPMT, "physPMT", logicWorld, false, i*yVoxels+j, true);
-		}
-	}
-	// make +x "PMT's" and lenses
-	xPos = xVCBoxSize/2+2*tAcrylicPanel+dz+tGlass/2;
-	for (G4int i=0; i<yVoxels; i++)
-	{
-		yPos = -yVCBoxSize/2+i*(yVoxelSize+yVoxelSpace)+yVoxelSpace+yVoxelSize/2;
-		for(G4int j=0; j<zVoxels; j++)
-		{
-			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
-			physPMTLens = new G4PVPlacement(xRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
-			physPMT = new G4PVPlacement(xRot, G4ThreeVector(xPos+lenPMT/2, yPos, zPos), logicPMT, "physPMT", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels, true);
-		}
-	}
-	// make -y "PMT's" and lenses
-	yPos = -yVCBoxSize/2-tAcrylicPanel-dz-tGlass/2;
-	for (G4int i=0; i<xVoxels; i++)
-	{
-		xPos = -xVCBoxSize/2+i*(xVoxelSize+xVoxelSpace)+xVoxelSpace+xVoxelSize/2;
-		for(G4int j=0; j<zVoxels; j++)
-		{
-			zPos = -zVCBoxSize/2+j*(zVoxelSize+zVoxelSpace)+zVoxelSpace+zVoxelSize/2;
-			physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
-			physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos-lenPMT/2, zPos), logicPMT, "physPMT", logicWorld, false, i*zVoxels+j+xVoxels*yVoxels+yVoxels*zVoxels, true);
-		}
-	}
-}/**/
 // Detector Construct() function
 G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 {
@@ -414,7 +242,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	attr = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0, 0.2));
 	logicTable->SetVisAttributes(attr);
 	yPos = -h_table/2;
-	physTable = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicTable, "physTable", logicWorld, false, 0, true);/**/
+	physTable = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicTable, "physTable", logicWorld, false, 0, true);
 	// make optical table top
 	solidTableTop = new G4Box("solidTableTop", w_table, t_table/2, l_table);
 	logicTableTop = new G4LogicalVolume(solidTableTop, stainless, "logicTableTop");
@@ -422,7 +250,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	attr = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
 	logicTableTop->SetVisAttributes(attr);
 	yPos = h_table/2 + t_table/2;
-	physTableTop = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicTableTop, "physTableTop", logicWorld, false, 0, true);/**/
+	physTableTop = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicTableTop, "physTableTop", logicWorld, false, 0, true);
 	// wood dark box
 	solidDarkBoxOuter = new G4Box("solidDarkBoxOuter", 22*cm, 22*cm, 60*cm);
 	solidDarkBoxInner = new G4Box("solidDarkBoxInner", 21*cm, 21*cm, 59*cm);
@@ -432,9 +260,9 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	attr = new G4VisAttributes(G4Colour(0.9, 0.0, 0.9, 0.05));
 	logicDarkBox->SetVisAttributes(attr);
 	yPos = h_table/2 + t_table + 22*cm;
-	physDarkBox = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicDarkBox, "physDarkBox", logicWorld, false, 0, true);/**/
+	physDarkBox = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicDarkBox, "physDarkBox", logicWorld, false, 0, true);
 	// Note pad used as platform for source
-	solidNotePad = new G4Box("solidNotePad", 1.5*in, yVoxelSize/4, 1.5*in);
+	solidNotePad = new G4Box("solidNotePad", w_notepad, h_notepad, l_notepad);
 	logicNotePad = new G4LogicalVolume(solidNotePad, paper, "logicNotePad");
 	// make yellow "note pad" stack
 	attr = new G4VisAttributes(G4Colour(0.69,0.69,0.0,0.5));
@@ -443,13 +271,13 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	zPos = -15.0*cm;
 	physNotePad = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicNotePad, "physNotePad", logicWorld, false, 0, true);
 	// source "puck"
-	solidSource = new G4Tubs("solidSource", 0.25*cm, 0.5*cm, 0.05*cm, 0, 360*deg);
+	solidSource = new G4Tubs("solidSource", r_source_inner, r_source_outer, t_source, 0, 360*deg);
 	logicSource = new G4LogicalVolume(solidSource, acrylic, "logicSource");
 	// red source "puck"
 	attr = new G4VisAttributes(G4Colour(0.9, 0.0, 0.0, 0.5));
 	logicSource->SetVisAttributes(attr);
 	yPos = h_table/2 + t_table + 1*cm + yVoxelSize/2+ 0.05*cm;
-	physSource = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicSource, "physSource", logicWorld, false, 0, true);/**/
+	physSource = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicSource, "physSource", logicWorld, false, 0, true);
 	// PVT Cube
 	solidVoxel = new G4Box("solidVoxel", xVoxelSize/2, yVoxelSize/2, zVoxelSize/2);
 	logicVoxel = new G4LogicalVolume(solidVoxel, EJ200, "logicVoxel");
@@ -464,8 +292,8 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = -10*cm - xVoxelSize/2;
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 1, true);
 	// Foil "wrap" for PVT cubes
-	solidFoilWrapInner = new G4Box("solidFoilWrapInner", xVoxelSize/2 + 0.45*mm, yVoxelSize/2, zVoxelSize/2 + 0.45*mm);
-	solidFoilWrapOuter = new G4Box("solidFoilWrapOuter", xVoxelSize/2 + 0.5*mm, yVoxelSize/2, zVoxelSize/2 + 0.5*mm);
+	solidFoilWrapInner = new G4Box("solidFoilWrapInner", xVoxelSize/2, yVoxelSize/2, zVoxelSize/2);
+	solidFoilWrapOuter = new G4Box("solidFoilWrapOuter", xVoxelSize/2 + t_foil, yVoxelSize/2, zVoxelSize/2 + t_foil);
 	solidFoilWrap = new G4SubtractionSolid("solidFoilWrap", solidFoilWrapOuter, solidFoilWrapInner, 0, G4ThreeVector(0.,0.,0.));
 	logicFoilWrap = new G4LogicalVolume(solidFoilWrap, aluminum, "logicFoilWrap");
 	// gray color for foil "wrap"
@@ -514,7 +342,7 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize + lenLGTaper + tGlass + lenPMT/2;
 	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
-	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 1, true);/**/
+	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 1, true);
 	// Define "PMT" housing
 	solidPMTshield = new G4Tubs("solidPMTshield", 0, rPMT, lenPMT/2 + (rPMT - r2_LG)/2, 0, 360*deg);
 	solidPMTshieldwall = new G4SubtractionSolid("solidPMTshieldwall", solidPMTshield, solidPMT);
@@ -537,16 +365,9 @@ void PVTcubeDetectorConstruction::ConstructSDandField()
 	// Define PMT's as sensitive volumes
 	detPMT = new PVTcubePMTSensitiveDetector("/PVTcubePMT");
 	SDman->AddNewDetector(detPMT);
-	logicPMT->SetSensitiveDetector(detPMT);/**/
-	// Define Voxels as sensitive volumes -- TODO: Re-define as primitve scoring volume for energy depositions (see Example B4d) (Remove NuLatVoxelSensitiveDetector class?)
-	/*detVoxel = new NuLatVoxelSensitiveDetector("/NuLatVoxel", xVoxels, yVoxels, zVoxels);
+	logicPMT->SetSensitiveDetector(detPMT);
+	// PVT cube voxel scoring volume
+	detVoxel = new PVTcubeVoxelSensitiveDetector("/PVTcubeVoxel", nCubes);
 	SDman->AddNewDetector(detVoxel);
-	logicVoxel->SetSensitiveDetector(detVoxel);*/
-	// Define Voxels as primitive scoring volumes
-	/*primVoxel = new G4PSEnergyDeposit("Edep");
-	detVoxel->RegisterPrimitive(primVoxel);
-	primVoxel = new G4PSTrackLength("TrackLength");
-	primVoxel->SetFilter(charged);
-	detVoxel->RegisterPrimitive(primVoxel);
-	logicVoxel->SetSensitiveDetector(detVoxel);/**/
+	logicVoxel->SetSensitiveDetector(detVoxel);
 }

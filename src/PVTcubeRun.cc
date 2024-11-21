@@ -24,7 +24,6 @@ PVTcubeRunAction::PVTcubeRunAction()
 	Aman->CreateNtupleDColumn("fZ");// col 4
 	// time of hit
 	Aman->CreateNtupleDColumn("fT");// col 5
-	// TODO: figure out if I can get waveforms from the simulation, and if so, how. Then store them...
 	Aman->FinishNtuple(1);
 	// create N tuple for energy deposition tracking (MC truth)
 	Aman->CreateNtuple("PVTcube_Scoring", "PVTcube_Scoring");// Ntuple 2
@@ -36,19 +35,17 @@ PVTcubeRunAction::PVTcubeRunAction()
 	Aman->CreateNtupleIColumn("fID");// col 3
 	// scoring value for energy deposition
 	Aman->CreateNtupleDColumn("fTotEdep");// col 4
-	// scoring for first hit
-	Aman->CreateNtupleDColumn("fFirstHitEdep");// col 5
 	// Voxel coords
-	Aman->CreateNtupleDColumn("fX");// col 6
-	Aman->CreateNtupleDColumn("fY");// col 7
-	Aman->CreateNtupleDColumn("fZ");// col 8
+	Aman->CreateNtupleDColumn("fX");// col 5
+	Aman->CreateNtupleDColumn("fY");// col 6
+	Aman->CreateNtupleDColumn("fZ");// col 7
 	// time of hit
-	Aman->CreateNtupleDColumn("fT");// col 9
+	Aman->CreateNtupleDColumn("fT");// col 8
 	// columns for momentum components
-	Aman->CreateNtupleDColumn("fPX0");// col 10
-	Aman->CreateNtupleDColumn("fPY0");// col 11
-	Aman->CreateNtupleDColumn("fPZ0");// col 12
-	Aman->CreateNtupleDColumn("fPmag");// col 13
+	Aman->CreateNtupleDColumn("fPX0");// col 9
+	Aman->CreateNtupleDColumn("fPY0");// col 10
+	Aman->CreateNtupleDColumn("fPZ0");// col 11
+	Aman->CreateNtupleDColumn("fPmag");// col 12
 	Aman->FinishNtuple(2);
 	// TODO: get trajectory info stored in Ntuple
 }
@@ -58,6 +55,7 @@ PVTcubeRunAction::~PVTcubeRunAction()
 // Beginning of Run
 void PVTcubeRunAction::BeginOfRunAction(const G4Run* PVTcubeRun)
 {
+	scoringVolume = G4LogicalVolumeStore::GetInstance()->GetVolume("logicVoxel");
 	G4AnalysisManager *Aman = G4AnalysisManager::Instance();
 	G4int rNum = PVTcubeRun->GetRunID();
 	std::stringstream sRunID;

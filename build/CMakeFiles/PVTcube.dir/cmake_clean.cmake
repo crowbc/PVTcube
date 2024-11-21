@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o.d"
   "CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o"
   "CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o.d"
+  "CMakeFiles/PVTcube.dir/src/PVTcubeVoxelSensitiveDetector.cc.o"
+  "CMakeFiles/PVTcube.dir/src/PVTcubeVoxelSensitiveDetector.cc.o.d"
   "PVTcube"
   "PVTcube.pdb"
 )

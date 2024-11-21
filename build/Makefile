@@ -366,6 +366,30 @@ src/PVTcubeRun.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PVTcube.dir/build.make CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.s
 .PHONY : src/PVTcubeRun.cc.s
 
+src/PVTcubeVoxelSensitiveDetector.o: src/PVTcubeVoxelSensitiveDetector.cc.o
+.PHONY : src/PVTcubeVoxelSensitiveDetector.o
+
+# target to build an object file
+src/PVTcubeVoxelSensitiveDetector.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PVTcube.dir/build.make CMakeFiles/PVTcube.dir/src/PVTcubeVoxelSensitiveDetector.cc.o
+.PHONY : src/PVTcubeVoxelSensitiveDetector.cc.o
+
+src/PVTcubeVoxelSensitiveDetector.i: src/PVTcubeVoxelSensitiveDetector.cc.i
+.PHONY : src/PVTcubeVoxelSensitiveDetector.i
+
+# target to preprocess a source file
+src/PVTcubeVoxelSensitiveDetector.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PVTcube.dir/build.make CMakeFiles/PVTcube.dir/src/PVTcubeVoxelSensitiveDetector.cc.i
+.PHONY : src/PVTcubeVoxelSensitiveDetector.cc.i
+
+src/PVTcubeVoxelSensitiveDetector.s: src/PVTcubeVoxelSensitiveDetector.cc.s
+.PHONY : src/PVTcubeVoxelSensitiveDetector.s
+
+# target to generate assembly for a file
+src/PVTcubeVoxelSensitiveDetector.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PVTcube.dir/build.make CMakeFiles/PVTcube.dir/src/PVTcubeVoxelSensitiveDetector.cc.s
+.PHONY : src/PVTcubeVoxelSensitiveDetector.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -403,6 +427,9 @@ help:
 	@echo "... src/PVTcubeRun.o"
 	@echo "... src/PVTcubeRun.i"
 	@echo "... src/PVTcubeRun.s"
+	@echo "... src/PVTcubeVoxelSensitiveDetector.o"
+	@echo "... src/PVTcubeVoxelSensitiveDetector.i"
+	@echo "... src/PVTcubeVoxelSensitiveDetector.s"
 .PHONY : help
 
 

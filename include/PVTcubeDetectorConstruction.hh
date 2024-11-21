@@ -24,6 +24,7 @@
 // Header files for sensitive detector
 #include "G4VSensitiveDetector.hh"
 #include "G4SDManager.hh"
+#include "G4MultiFunctionalDetector.hh"
 #include "G4VPrimitiveScorer.hh"
 #include "G4PSEnergyDeposit.hh"
 #include "G4PSTrackLength.hh"
@@ -37,7 +38,7 @@
 #include "G4Colour.hh"
 // Header file for user defined libraries
 #include "PVTcubePMTsensitiveDetector.hh"
-//#include "PVTcubeVoxelSensitiveDetector.hh"
+#include "PVTcubeVoxelSensitiveDetector.hh"
 // Write the class
 class PVTcubeDetectorConstruction : public G4VUserDetectorConstruction
 {
@@ -114,9 +115,10 @@ private:
 	G4int nCubes;
 	G4double xVoxelSize, yVoxelSize, zVoxelSize;
 	G4double xVoxelSep, yVoxelSep, zVoxelSep;
-	//G4double xVCBoxSize, yVCBoxSize, zVCBoxSize;
 	G4double lenPMT, lenLGBase, lenLGTaper, lenLGSqu, lenLGwPMT, r1_LG, r2_LG;
 	G4double rPMT, tGlass, rSpherePMTsurf, tGlass_min;
+	// Other geometry parameters
+	G4double w_notepad, l_notepad, h_notepad, r_source_inner, r_source_outer, t_source, t_foil;
 	// Mass fraction of C and H in EJ200
 	G4double Hmass_EJ200 = Hmass*nH_EJ200;
 	G4double Cmass_EJ200 = Cmass*nC_EJ200;
@@ -125,13 +127,10 @@ private:
 	G4double Hfrac_EJ200 = nH_EJ200*Hmass/totalMass_EJ200;
 	// function declarations
 	void DefineMaterials();
-	void BuildVCBox();
-	void BuildAcrylicBox();
-	void BuildLGandPMT();
 	virtual void ConstructSDandField();
 	// Pointers for SD's: (uncomment when supporting classes are written)
 	PVTcubePMTSensitiveDetector *detPMT;
-	//PVTcubeVoxelSensitiveDetector *detVoxel;
+	PVTcubeVoxelSensitiveDetector *detVoxel;
 	// Pointer for primitive scorer
 	G4VPrimitiveScorer *primVoxel;
 	// Pointer to Generic Messenger Object

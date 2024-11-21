@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jack/Documents/geant4/PVTcube/src/PVTcubePMTsensitiveDetector.cc" "CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubePMTsensitiveDetector.cc.o.d"
   "/home/jack/Documents/geant4/PVTcube/src/PVTcubePhysics.cc" "CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubePhysics.cc.o.d"
   "/home/jack/Documents/geant4/PVTcube/src/PVTcubeRun.cc" "CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubeRun.cc.o.d"
+  "/home/jack/Documents/geant4/PVTcube/src/PVTcubeVoxelSensitiveDetector.cc" "CMakeFiles/PVTcube.dir/src/PVTcubeVoxelSensitiveDetector.cc.o" "gcc" "CMakeFiles/PVTcube.dir/src/PVTcubeVoxelSensitiveDetector.cc.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -4,7 +4,7 @@
 // Geant4 header files
 #include "G4UserEventAction.hh"
 #include "G4Event.hh"
-#include "G4HCofThisEvent.hh"
+//#include "G4HCofThisEvent.hh"
 #include "G4SDManager.hh"
 #include "G4AnalysisManager.hh"
 #include "G4TrackingManager.hh"

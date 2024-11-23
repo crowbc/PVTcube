@@ -1,0 +1,17 @@
+# Macro file for the initialization phase of PVTcube
+#
+/run/initialize
+#/run/numberOfThreads 8
+#
+# Specify particle source (Na-22 nucleus, with 0 charge, 0 excitation energy)
+/gps/particle ion
+/gps/ion 11 22 0 0
+# Specify source geometry
+/gps/pos/type Volume
+/gps/pos/shape Sphere
+/gps/pos/centre 0 28.84 -15 cm
+/gps/pos/radius 1 mm
+/gps/ang/type iso
+#
+# Start a 600s (10 min) run
+/run/beamOn 166800000

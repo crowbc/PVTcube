@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------
-# Setup the project
-cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+# Setup the project -- use 3.14 as minimum to compile on mtc-b
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 project(PVTcube)
 
 #----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ add_executable(PVTcube PVTcube.cc ${sources} ${headers})
 target_link_libraries(PVTcube ${Geant4_LIBRARIES})
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
-# build NuLat. This is so that we can run the executable directly because it
+# build the simulation. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory. (use the GLOB method)
 #
 #foreach(_script ${_SCRIPTS})
@@ -47,10 +47,10 @@ target_link_libraries(PVTcube ${Geant4_LIBRARIES})
 #    COPYONLY
 #    )
 #endforeach()
-file(GLOB MACRO_FILES "/macros/*.mac")
+file(GLOB MACRO_FILES ${PROJECT_SOURCE_DIR}/macros/*.mac)
 file(COPY ${MACRO_FILES} DESTINATION ${PROJECT_BINARY_DIR})
 # Copy all data files into binary directory
-file(GLOB DATA_FILES "/data/*.dat")
+file(GLOB DATA_FILES ${PROJECT_SOURCE_DIR}/data/*.dat)
 file(COPY ${DATA_FILES} DESTINATION ${PROJECT_BINARY_DIR})
 #----------------------------------------------------------------------------
 # Add program to the project targets

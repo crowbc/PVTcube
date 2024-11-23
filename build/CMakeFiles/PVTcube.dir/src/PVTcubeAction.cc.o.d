@@ -587,7 +587,6 @@ CMakeFiles/PVTcube.dir/src/PVTcubeAction.cc.o: \
  /home/jack/Documents/geant4/PVTcube/include/PVTcubeEvent.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4UserEventAction.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4Event.hh \
- /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4HCofThisEvent.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SDManager.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4SDStructure.hh \
  /opt/applications/geant4/geant4-v11.1.0-install/include/Geant4/G4VSensitiveDetector.hh \

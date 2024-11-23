@@ -7,6 +7,9 @@ Initial build for testing geometry and materials properties, physics of detector
 
 Change log (in reverse chronological order starting from most recent version:)
 
+22NOV2024 -- v 1.3.1 Unused Volume Fix
+	Removed unused volume declarations in detector construction class. Fixed CMakeLists.txt to copy macro files to build directory.
+	
 20NOV2024 -- v 1.3.0 Scoring Volume Update
 	Added voxel sensitive detector class and registered voxels as scoring volumes in SD manager. Implemented scoring N-Tuples in sensitive detector class.
 

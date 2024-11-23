@@ -1,9 +1,9 @@
 /*
 	File: PVTcube.cc
 	Author: Brian Crow
-	Date: 20NOV2024
+	Date: 22NOV2024
 	Description: This code is for simulation of an individual PVT detector cube and ensembles of identical cubes. See README for notes and change log.
-	Version: 1.3.0 Scoring Volume Update
+	Version: 1.3.1 Unused Volume Fix
 */
 // Included C++ libraries
 #include <iostream>
@@ -48,8 +48,6 @@ int main(int argc, char** argv)
 		rMan->Initialize();
 	#endif
 	// Default strings for initializing
-	G4String pathCmd = "/control/macroPath ";
-	G4String macPath = "/home/jack/Documents/geant4/PVTcube/macros/";
 	G4String macCmd = "/control/execute ";
 	G4String macName = "init_vis.mac";
 	// Default UI for interactive mode
@@ -65,14 +63,12 @@ int main(int argc, char** argv)
 	if(ui)
 	{
 		// Open the viewer and run in interactive mode
-		UIman->ApplyCommand(pathCmd+macPath);
 		UIman->ApplyCommand(macCmd+macName);
 		ui->SessionStart();	
 	}
 	else
 	{
 		// Run in batch mode using command line input to execute the specified macro. Runtime environment handles macro exceptions
-		UIman->ApplyCommand(pathCmd+macPath);
 		macName=argv[1];
 		UIman->ApplyCommand(macCmd+macName);
 	}

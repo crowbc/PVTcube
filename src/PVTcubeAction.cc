@@ -10,12 +10,12 @@ void PVTcubeActionInitialization::BuildForMaster() const
 {
 	// Do only Run Action for Master Thread
 	PVTcubeRunAction *runAction = new PVTcubeRunAction();
-	SetUserAction(runAction);/**/
+	SetUserAction(runAction);
 }
 // build function
 void PVTcubeActionInitialization::Build() const
 {
-	// Generator Action (uncomment this first)
+	// Generator Action
 	PVTcubePrimaryGenerator *generator = new PVTcubePrimaryGenerator();
 	SetUserAction(generator);
 	// Run Action

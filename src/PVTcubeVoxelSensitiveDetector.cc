@@ -64,7 +64,7 @@ G4bool PVTcubeVoxelSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHist
 }
 /* ---------------------------------------------- */
 /*  Convert a steps particle name to an ID number */
-/*  specific to the NuLat analysis                */
+/*  specific to the PVTcube analysis              */
 /* ---------------------------------------------- */
 G4int PVTcubeVoxelSensitiveDetector::ParticleNameToIDNumber(G4String name)
 {

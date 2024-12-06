@@ -43,6 +43,10 @@ PVTcubeDetectorConstruction::PVTcubeDetectorConstruction()
 	r_source_inner = 0.25*cm;
 	r_source_outer = 0.5*cm;
 	t_source = 0.05*cm;
+	// set shielding block dimensions
+	x_block = 10.0*cm;
+	y_block = 10.0*cm;
+	z_block = 20.0*cm;
 	// Define the messenger and declare properties - for now only number of cubes can be varied.
 	fMessenger = new G4GenericMessenger(this, "/detector/", "Detector Construction");
 	fMessenger->DeclareProperty("nCubes", nCubes, "Number of PVT cubes in the set-up");
@@ -291,6 +295,9 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 1, true);
+	xPos = 0*cm;
+	zPos = 15.0*cm;
+	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 2, true);
 	// Foil "wrap" for PVT cubes
 	solidFoilWrapInner = new G4Box("solidFoilWrapInner", xVoxelSize/2, yVoxelSize/2, zVoxelSize/2);
 	solidFoilWrapOuter = new G4Box("solidFoilWrapOuter", xVoxelSize/2 + t_foil, yVoxelSize/2, zVoxelSize/2 + t_foil);
@@ -301,9 +308,13 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	logicFoilWrap->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
 	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize/2;
+	zPos = -15.0*cm;
 	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 1, true);
+	xPos = 0*cm;
+	zPos = 15.0*cm;
+	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 2, true);
 	// LG for PMT
 	solidLGTrd = new G4Trd("solidLGTrd", xVoxelSize/2, lenLGBase/2, yVoxelSize/2, lenLGBase/2, lenLGTaper/2);
 	solidLGCone = new G4Cons("solidLGCone", 0.*cm, r1_LG, 0.*cm, r2_LG, lenLGTaper/2, 0, 360*deg);
@@ -315,9 +326,13 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	logicLG->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
 	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize + lenLGTaper/2;
+	zPos = -15.0*cm;
 	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 1, true);
+	xPos = 0*cm;
+	zPos = 15.0*cm;
+	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 2, true);
 	// Define Borosilicate Glass boundaries
 	solidPMTGlass = new G4Tubs("solidPMTGlass", 0, rPMT, tGlass/2, 0, 360.*deg);
 	solidPMTconvex = new G4Sphere("solidPMTconvex" , 0, rSpherePMTsurf, 0, 360.*deg, 0, 360.*deg);
@@ -329,9 +344,13 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	logicPMTLens->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
 	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize + lenLGTaper + tGlass/2;
+	zPos = -15.0*cm;
 	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 1, true);
+	xPos = 0*cm;
+	zPos = 15.0*cm;
+	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 2, true);
 	// Define "PMT(s)"
 	solidPMT = new G4Tubs("solidPMT", 0, rPMT, lenPMT/2, 0, 360*deg);
 	logicPMT = new G4LogicalVolume(solidPMT, air, "logicPMT");
@@ -340,9 +359,13 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	logicPMT->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
 	yPos = h_table/2 + t_table + 1.0*cm + yVoxelSize + lenLGTaper + tGlass + lenPMT/2;
+	zPos = -15.0*cm;
 	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 1, true);
+	xPos = 0*cm;
+	zPos = 15.0*cm;
+	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 2, true);
 	// Define "PMT" housing
 	solidPMTshield = new G4Tubs("solidPMTshield", 0, rPMT, lenPMT/2 + (rPMT - r2_LG)/2, 0, 360*deg);
 	solidPMTshieldwall = new G4SubtractionSolid("solidPMTshieldwall", solidPMTshield, solidPMT);
@@ -351,9 +374,25 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	attr = new G4VisAttributes(G4Colour(0.5,0.5,0.5,0.05));
 	logicPMTshieldwall->SetVisAttributes(attr);
 	xPos = 10*cm + xVoxelSize/2;
+	zPos = -15.0*cm;
 	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 0, true);
 	xPos = -10*cm - xVoxelSize/2;
 	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 1, true);
+	xPos = 0*cm;
+	zPos = 15.0*cm;
+	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 2, true);
+	// lead shielding blocks
+	solidLeadBlock = new G4Box("solidLeadBlock", x_block/2, y_block/2, z_block/2);
+	logicLeadBlock = new G4LogicalVolume(solidLeadBlock, lead, "logicLeadBlock");
+	// make lead shielding block dark gray and almost opaque
+	attr = new G4VisAttributes(G4Colour(0.25,0.25,0.25,0.95));
+	logicLeadBlock->SetVisAttributes(attr);
+	xPos = -3.0*cm - x_block;
+	yPos = h_table/2 + t_table + 1.0*cm + y_block/2;
+	zPos = 0;
+	physLeadBlock = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicLeadBlock, "physLeadBlock", logicWorld, false, 0, true);
+	xPos = 3.0*cm + x_block;
+	physLeadBlock = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicLeadBlock, "physLeadBlock", logicWorld, false, 1, true);
 	// return value
 	return physWorld;
 }

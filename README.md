@@ -7,6 +7,9 @@ Initial build for testing geometry and materials properties, physics of detector
 
 Change log (in reverse chronological order starting from most recent version:)
 
+05DEC2024 -- v 1.4.0 Threefold Coincidence
+	Added a third detector voxel, foil wrapping, photomultiplier tube, lens and mu metal shield as well as lead shielding blocks to simulate threefold coincidence with a collumation channel between the source and the third voxel. Changed default output ntuple format to csv.
+
 22NOV2024 -- v 1.3.1 Unused Volume Fix
 	Removed unused volume declarations in detector construction class. Fixed CMakeLists.txt to copy macro files to build directory.
 	

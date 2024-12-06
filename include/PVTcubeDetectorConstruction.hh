@@ -46,21 +46,20 @@ public:
 	PVTcubeDetectorConstruction();
 	~PVTcubeDetectorConstruction();
 	// method for looking up scoring volume
-	// TODO: ?
 	G4LogicalVolume *GetPVTcubeScoringVolume() const { return fPVTcubeScoringVolume; }
 	// construct function for detector factory
 	virtual G4VPhysicalVolume* Construct();
 private:
 	// Volume declarations - naming convention: solidName for geometry volume definitions, logicName for logical volume definitions and physName for physical volume definitions
-	G4Box *solidWorld, *solidVoxel, *solidTableTop, *solidTable, *solidNotePad, *solidDarkBoxOuter, *solidDarkBoxInner, *solidFoilWrapInner, *solidFoilWrapOuter;
+	G4Box *solidWorld, *solidVoxel, *solidTableTop, *solidTable, *solidNotePad, *solidDarkBoxOuter, *solidDarkBoxInner, *solidFoilWrapInner, *solidFoilWrapOuter, *solidLeadBlock;
 	G4Trd *solidLGTrd;
 	G4Tubs *solidPMT, *solidPMTGlass, *solidSource, *solidPMTshield;
 	G4Cons *solidLGCone;
 	G4Sphere *solidPMTconvex;
 	G4SubtractionSolid *solidPMTLens, *solidDarkBox, *solidPMTshieldwall, *solidFoilWrap;
 	G4IntersectionSolid *solidLG;
-	G4LogicalVolume *logicWorld, *logicVoxel, *fPVTcubeScoringVolume, *logicLG, *logicPMT, *logicPMTLens, *logicTableTop, *logicTable, *logicSource, *logicNotePad, *logicDarkBox, *logicPMTshieldwall, *logicFoilWrap;
-	G4VPhysicalVolume *physWorld, *physVoxel, *physLG, *physPMT, *physPMTLens, *physTableTop, *physTable, *physSource, *physNotePad, *physDarkBox, *physPMTshieldwall, *physFoilWrap;
+	G4LogicalVolume *logicWorld, *logicVoxel, *fPVTcubeScoringVolume, *logicLG, *logicPMT, *logicPMTLens, *logicTableTop, *logicTable, *logicSource, *logicNotePad, *logicDarkBox, *logicPMTshieldwall, *logicFoilWrap, *logicLeadBlock;
+	G4VPhysicalVolume *physWorld, *physVoxel, *physLG, *physPMT, *physPMTLens, *physTableTop, *physTable, *physSource, *physNotePad, *physDarkBox, *physPMTshieldwall, *physFoilWrap, *physLeadBlock;
 	// Declare optical surfaces
 	G4OpticalSurface *surface_Al, *surface_SS;
 	// Material declarations
@@ -111,24 +110,26 @@ private:
 	G4double xWorld, yWorld, zWorld;
 	// Table dimensions
 	G4double w_table, l_table, h_table, t_table;
-	// Detector Parameters (number of voxels in coincidence, length in each dimension, separation distance in x, y and z dimensions -- only defined if nCubes>1)
+	// Detector Parameters
 	G4int nCubes;
 	G4double xVoxelSize, yVoxelSize, zVoxelSize;
 	G4double xVoxelSep, yVoxelSep, zVoxelSep;
 	G4double lenPMT, lenLGBase, lenLGTaper, lenLGSqu, lenLGwPMT, r1_LG, r2_LG;
 	G4double rPMT, tGlass, rSpherePMTsurf, tGlass_min;
+	G4double x_block, y_block, z_block;
 	// Other geometry parameters
 	G4double w_notepad, l_notepad, h_notepad, r_source_inner, r_source_outer, t_source, t_foil;
 	// Mass fraction of C and H in EJ200
 	G4double Hmass_EJ200 = Hmass*nH_EJ200;
 	G4double Cmass_EJ200 = Cmass*nC_EJ200;
-	G4double totalMass_EJ200 = Cmass_EJ200 + Hmass_EJ200;// mass per cc
+	// mass per cc
+	G4double totalMass_EJ200 = Cmass_EJ200 + Hmass_EJ200;
 	G4double Cfrac_EJ200 = nC_EJ200*Cmass/totalMass_EJ200;
 	G4double Hfrac_EJ200 = nH_EJ200*Hmass/totalMass_EJ200;
 	// function declarations
 	void DefineMaterials();
 	virtual void ConstructSDandField();
-	// Pointers for SD's: (uncomment when supporting classes are written)
+	// Pointers for SD's:
 	PVTcubePMTSensitiveDetector *detPMT;
 	PVTcubeVoxelSensitiveDetector *detVoxel;
 	// Pointer for primitive scorer

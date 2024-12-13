@@ -14,4 +14,4 @@
 /gps/ang/type iso
 #
 # Start a 600s (10 min) run
-/run/beamOn 166800000
+/run/beamOn 154578000

@@ -7,6 +7,9 @@ Initial build for testing geometry and materials properties, physics of detector
 
 Change log (in reverse chronological order starting from most recent version:)
 
+12DEC2024 -- v 1.4.1 Updated Macros
+	Updated batch mode macros with event count that more accurately reflects the age of the source being simulated. Changed the Event Manager to update every 100,000th event instead of every 1,000th event.
+	
 05DEC2024 -- v 1.4.0 Threefold Coincidence
 	Added a third detector voxel, foil wrapping, photomultiplier tube, lens and mu metal shield as well as lead shielding blocks to simulate threefold coincidence with a collumation channel between the source and the third voxel. Changed default output ntuple format to csv.
 

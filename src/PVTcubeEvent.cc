@@ -4,7 +4,7 @@
 PVTcubeEventAction::PVTcubeEventAction(PVTcubeRunAction* aRun) : G4UserEventAction()
 {
 	// initialize with 0 energy
-	fEdepPVTcube = 0.0;
+	//fEdepPVTcube = 0.0;
 }
 // Destructor
 PVTcubeEventAction::~PVTcubeEventAction()
@@ -13,10 +13,10 @@ PVTcubeEventAction::~PVTcubeEventAction()
 void PVTcubeEventAction::BeginOfEventAction(const G4Event* anEvent)
 {
 	// Set energy to 0 at beginning of every event
-	fEdepPVTcube = 0.0;
-	// Get event number, print event number for every 1000th event
+	//fEdepPVTcube = 0.0;
+	// Get event number, print event number for every 100,000th event
 	fEvent = anEvent->GetEventID();
-	if(fEvent%1000 == 0)
+	if(fEvent%100000 == 0)
 	{
 		if (fEvent == 0)
 		{
@@ -30,6 +30,6 @@ void PVTcubeEventAction::BeginOfEventAction(const G4Event* anEvent)
 void PVTcubeEventAction::EndOfEventAction(const G4Event* anEvent)
 {
 	// Initialize analysis manager and fill N tuple with energy depositions
-	G4AnalysisManager *Aman = G4AnalysisManager::Instance();
+	//G4AnalysisManager *Aman = G4AnalysisManager::Instance();
 	// energy scoring added to PVTcubeVoxelSensitiveDetector class
 }

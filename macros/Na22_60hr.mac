@@ -13,5 +13,5 @@
 /gps/pos/radius 1 mm
 /gps/ang/type iso
 #
-# Start a 60hr (60G event) run
-/run/beamOn 60048000000
+# Start a 60hr (55G event) run
+/run/beamOn 55648080000

@@ -60,8 +60,8 @@ void PVTcubeRunAction::BeginOfRunAction(const G4Run* PVTcubeRun)
 	G4int rNum = PVTcubeRun->GetRunID();
 	std::stringstream sRunID;
 	sRunID << rNum;
-	G4String name = "PVTcube_run";
-	G4String ext = "_output.csv";
+	G4String name = "run";
+	G4String ext = ".csv";
 	G4String fName = name + sRunID.str() + ext;
 	Aman->OpenFile(fName);
 	Aman->SetVerboseLevel(1);

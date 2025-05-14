@@ -4,11 +4,11 @@
 PVTcubeDetectorConstruction::PVTcubeDetectorConstruction()
 {
 	// Set Parameter Default Values - TODO: set default values in the messenger
-	nCubes = 2;
+	nCubes = 3;
 	// default geometry dimensions
-	xVoxelSize = 2.495*in;
-	yVoxelSize = 2.495*in;
-	zVoxelSize = 2.495*in;
+	xVoxelSize = 2.25*in;
+	yVoxelSize = 2.25*in;
+	zVoxelSize = 2.25*in;
 	xVoxelSep = 0.000*in;
 	yVoxelSep = 0.000*in;
 	zVoxelSep = 0.000*in;
@@ -298,6 +298,8 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = 0*cm;
 	zPos = 15.0*cm;
 	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 2, true);
+	xPos = 2.5*xVoxelSize;
+	physVoxel = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicVoxel, "physVoxel", logicWorld, false, 3, true);
 	// Foil "wrap" for PVT cubes
 	solidFoilWrapInner = new G4Box("solidFoilWrapInner", xVoxelSize/2, yVoxelSize/2, zVoxelSize/2);
 	solidFoilWrapOuter = new G4Box("solidFoilWrapOuter", xVoxelSize/2 + t_foil, yVoxelSize/2, zVoxelSize/2 + t_foil);
@@ -315,6 +317,8 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = 0*cm;
 	zPos = 15.0*cm;
 	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 2, true);
+	xPos = 2.5*xVoxelSize;
+	physFoilWrap = new G4PVPlacement(0, G4ThreeVector(xPos, yPos, zPos), logicFoilWrap, "physFoilWrap", logicWorld, false, 3, true);
 	// LG for PMT
 	solidLGTrd = new G4Trd("solidLGTrd", xVoxelSize/2, lenLGBase/2, yVoxelSize/2, lenLGBase/2, lenLGTaper/2);
 	solidLGCone = new G4Cons("solidLGCone", 0.*cm, r1_LG, 0.*cm, r2_LG, lenLGTaper/2, 0, 360*deg);
@@ -333,6 +337,8 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = 0*cm;
 	zPos = 15.0*cm;
 	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 2, true);
+	xPos = 2.5*xVoxelSize;
+	physLG = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicLG, "physLG", logicWorld, false, 3, true);
 	// Define Borosilicate Glass boundaries
 	solidPMTGlass = new G4Tubs("solidPMTGlass", 0, rPMT, tGlass/2, 0, 360.*deg);
 	solidPMTconvex = new G4Sphere("solidPMTconvex" , 0, rSpherePMTsurf, 0, 360.*deg, 0, 360.*deg);
@@ -351,6 +357,8 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = 0*cm;
 	zPos = 15.0*cm;
 	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 2, true);
+	xPos = 2.5*xVoxelSize;
+	physPMTLens = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTLens, "physPMTLens", logicWorld, false, 3, true);
 	// Define "PMT(s)"
 	solidPMT = new G4Tubs("solidPMT", 0, rPMT, lenPMT/2, 0, 360*deg);
 	logicPMT = new G4LogicalVolume(solidPMT, air, "logicPMT");
@@ -366,6 +374,8 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = 0*cm;
 	zPos = 15.0*cm;
 	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 2, true);
+	xPos = 2.5*xVoxelSize;
+	physPMT = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMT, "physPMT", logicWorld, false, 3, true);
 	// Define "PMT" housing
 	solidPMTshield = new G4Tubs("solidPMTshield", 0, rPMT, lenPMT/2 + (rPMT - r2_LG)/2, 0, 360*deg);
 	solidPMTshieldwall = new G4SubtractionSolid("solidPMTshieldwall", solidPMTshield, solidPMT);
@@ -381,6 +391,8 @@ G4VPhysicalVolume* PVTcubeDetectorConstruction::Construct()
 	xPos = 0*cm;
 	zPos = 15.0*cm;
 	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 2, true);
+	xPos = 2.5*xVoxelSize;
+	physPMTshieldwall = new G4PVPlacement(yRot, G4ThreeVector(xPos, yPos, zPos), logicPMTshieldwall, "physPMTshieldwall", logicWorld, false, 3, true);
 	// lead shielding blocks
 	solidLeadBlock = new G4Box("solidLeadBlock", x_block/2, y_block/2, z_block/2);
 	logicLeadBlock = new G4LogicalVolume(solidLeadBlock, lead, "logicLeadBlock");

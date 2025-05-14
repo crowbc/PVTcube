@@ -1,9 +1,9 @@
 /*
 	File: PVTcube.cc
 	Author: Brian Crow
-	Date: 05DEC2024
+	Date: 14MAY2025
 	Description: This code is for simulation of an individual PVT detector cube and ensembles of identical cubes. See README for notes and change log.
-	Version: 1.4.0 Threefold Coincidence
+	Version: 1.5.0 Fourfold Coincidence
 */
 // Included C++ libraries
 #include <iostream>
@@ -37,7 +37,7 @@ int main(int argc, char** argv)
 		rMan->SetUserInitialization(new PVTcubeActionInitialization());
 		// put "/run/numberOfThreads <N>" in macro file, where <N> is the number of cores to use in simulation
 		// put "/run/initialize" in macro file
-	#else/**/
+	#else
 		// Construct the default run manager
 		G4RunManager *rMan = G4RunManagerFactory::CreateRunManager();
 		// Set mandatory initialization classes -- uncomment action initialization when class is written

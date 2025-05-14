@@ -7,6 +7,9 @@ Initial build for testing geometry and materials properties, physics of detector
 
 Change log (in reverse chronological order starting from most recent version:)
 
+14MAY2025 -- v 1.5.0 Fourfold Coincidence
+	Added a fourth detector voxel, foil wrapping, photomultiplier tube, lens and mu metal shield to simulate fourfold coincidence with a secondary scattering target placed near the third cube. Added analysis scripts and ntuple merging scripts which are designed to be used on the output csv files in the directory where these files are located. Corrected geometry for cube dimensions.
+
 12DEC2024 -- v 1.4.1 Updated Macros
 	Updated batch mode macros with event count that more accurately reflects the age of the source being simulated. Changed the Event Manager to update every 100,000th event instead of every 1,000th event.
 	
